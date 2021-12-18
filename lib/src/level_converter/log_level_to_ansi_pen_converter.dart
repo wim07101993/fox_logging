@@ -1,6 +1,5 @@
 import 'package:ansicolor/ansicolor.dart';
-
-import 'log_level_converter.dart';
+import 'package:logging_extensions/src/level_converter/log_level_converter.dart';
 
 class LogLevelToAnsiPenConverter extends LogLevelConverter<AnsiPen> {
   LogLevelToAnsiPenConverter({

@@ -1,5 +1,5 @@
 import 'package:logging/logging.dart';
-import 'package:logging_extensions/logging_extensions.dart';
+import 'package:logging_extensions/src/formatter/log_record_formatter.dart';
 import 'package:logging_extensions/src/sinks/log_sink.dart';
 
 extension LoggingExtensionsListExtensions<T> on Iterable<T> {

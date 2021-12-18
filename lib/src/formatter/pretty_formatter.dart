@@ -2,11 +2,10 @@ import 'dart:convert';
 
 import 'package:ansicolor/ansicolor.dart';
 import 'package:logging/logging.dart';
+import 'package:logging_extensions/src/formatter/log_record_formatter.dart';
+import 'package:logging_extensions/src/helping_extensions.dart';
+import 'package:logging_extensions/src/level_converter/log_level_to_ansi_pen_converter.dart';
 import 'package:logging_extensions/src/level_converter/log_level_to_symbol_converter.dart';
-
-import '../helping_extensions.dart';
-import '../level_converter/log_level_to_ansi_pen_converter.dart';
-import 'log_record_formatter.dart';
 
 class PrettyFormatter implements LogRecordFormatter {
   PrettyFormatter({

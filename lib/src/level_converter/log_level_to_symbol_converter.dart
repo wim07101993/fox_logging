@@ -1,4 +1,4 @@
-import 'log_level_converter.dart';
+import 'package:logging_extensions/src/level_converter/log_level_converter.dart';
 
 class LogLevelToSymbolConverter extends LogLevelConverter<String> {
   LogLevelToSymbolConverter({
