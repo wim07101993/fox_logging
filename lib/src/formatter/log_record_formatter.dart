@@ -1,5 +1,5 @@
 import 'package:logging/logging.dart';
 
 abstract class LogRecordFormatter {
-  String format(LogRecord record);
+  String format(LogRecord logRecord);
 }
