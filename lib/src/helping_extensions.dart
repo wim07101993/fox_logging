@@ -1,6 +1,6 @@
 import 'package:logging/logging.dart';
 import 'package:logging_extensions/src/formatter/log_record_formatter.dart';
-import 'package:logging_extensions/src/sinks/log_sink.dart';
+import 'package:logging_extensions/src/sink/log_sink.dart';
 
 extension LoggingExtensionsListExtensions<T> on Iterable<T> {
   Iterable<TOut> mapMany<TOut>(Iterable<TOut> Function(T) selector) sync* {

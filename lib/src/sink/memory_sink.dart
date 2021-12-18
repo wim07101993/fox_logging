@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:logging/logging.dart';
-import 'package:logging_extensions/src/sinks/log_sink.dart';
+import 'package:logging_extensions/src/sink/log_sink.dart';
 
 class MemorySink extends LogSink {
   MemorySink({

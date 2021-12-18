@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:logging_extensions/src/formatter/log_record_formatter.dart';
-import 'package:logging_extensions/src/sinks/io_sink.dart';
+import 'package:logging_extensions/src/sink/io_sink.dart';
 
 class FileSink extends IOLogSink {
   FileSink({

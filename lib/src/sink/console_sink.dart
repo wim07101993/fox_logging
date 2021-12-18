@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:logging/logging.dart';
 import 'package:logging_extensions/src/formatter/log_record_formatter.dart';
-import 'package:logging_extensions/src/sinks/log_sink.dart';
+import 'package:logging_extensions/src/sink/log_sink.dart';
 
 class PrintSink extends LogSink {
   PrintSink(this.formatter);
