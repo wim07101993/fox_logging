@@ -10,20 +10,20 @@ import 'package:logging_extensions/src/level_converter/log_level_to_symbol_conve
 class PrettyFormatter implements LogRecordFormatter {
   PrettyFormatter({
     this.printTime = true,
-    Converter<Level, AnsiPen>? toPen,
-    Converter<Level, String>? toSymbol,
-  })  : _toPen = toPen ?? LogLevelToAnsiPenConverter(),
-        _toSymbol = toSymbol ?? LogLevelToSymbolConverter();
+    Converter<Level, AnsiPen>? levelToPen,
+    Converter<Level, String>? levelToSymbol,
+  })  : levelToPen = levelToPen ?? LogLevelToAnsiPenConverter(),
+        levelToSymbol = levelToSymbol ?? LogLevelToSymbolConverter();
 
-  final Converter<Level, AnsiPen> _toPen;
-  final Converter<Level, String> _toSymbol;
+  final Converter<Level, AnsiPen> levelToPen;
+  final Converter<Level, String> levelToSymbol;
 
   final bool printTime;
 
   @override
   String format(LogRecord record) {
     final level = record.level;
-    final symbol = _toSymbol.convert(level);
+    final symbol = levelToSymbol.convert(level);
     return level != Level.SEVERE && level != Level.SHOUT
         ? _format(record, symbol)
         : _format(
@@ -72,11 +72,11 @@ class PrettyFormatter implements LogRecordFormatter {
       buffer.writeln(leftSplit.padRight(80, horizontalInner));
       buffer.write('$verticalOuterBorder ');
       if (printTime) {
-        buffer.write('Time: ${record.time.toIso8601String()} ');
+        buffer.write('Time: ${record.time.toIso8601String()}');
       }
       if (loggerName.isNotEmpty) {
         if (printTime) {
-          buffer.write('│ ');
+          buffer.write(' │ ');
         }
         buffer.write('Logger: $loggerName');
       }
@@ -91,7 +91,7 @@ class PrettyFormatter implements LogRecordFormatter {
 
     buffer.write(bottomLeftCorner.padRight(80, horizontalOuterBorder));
 
-    return _toPen.convert(level)(buffer.toString());
+    return levelToPen.convert(level)(buffer.toString());
   }
 
   void _writeLinesToBuffer(

@@ -1,13 +1,12 @@
 import 'dart:async';
-import 'dart:collection';
 
 import 'package:logging/logging.dart';
 import 'package:logging_extensions/src/sink/log_sink.dart';
 
-class MemorySink extends LogSink {
-  MemorySink({
-    int bufferSize = 200,
-  }) : _logRecords = bufferSize < 0
+class MemoryLogSink extends LogSink {
+  MemoryLogSink({
+    int? bufferSize = 200,
+  }) : _logRecords = bufferSize == null
             ? _LogRecordList.infinite()
             : _LogRecordList.limited(bufferSize);
 
@@ -36,9 +35,45 @@ abstract class _LogRecordList {
   void clear();
 }
 
-class _LimitedLogRecordList extends ListQueue<LogRecord>
-    implements _LogRecordList {
-  _LimitedLogRecordList(int size) : super(size);
+class _LimitedLogRecordList implements _LogRecordList {
+  _LimitedLogRecordList(this.size);
+
+  final List<LogRecord> _list = List.empty(growable: true);
+  final int size;
+
+  int nextWriteIndex = 0;
+
+  @override
+  void add(LogRecord logRecord) {
+    if (_list.length < size) {
+      _list.add(logRecord);
+    } else {
+      _list[nextWriteIndex] = logRecord;
+      nextWriteIndex++;
+      if (nextWriteIndex >= size) {
+        nextWriteIndex = 0;
+      }
+    }
+  }
+
+  @override
+  void clear() {
+    nextWriteIndex = 0;
+    _list.clear();
+  }
+
+  @override
+  List<LogRecord> toList() {
+    if (_list.length < size) {
+      return _list.toList(growable: false);
+    } else {
+      final startIndex = nextWriteIndex > 0 ? nextWriteIndex - 1 : size - 1;
+      return List.unmodifiable([
+        ..._list.sublist(startIndex),
+        ..._list.sublist(0, startIndex),
+      ]);
+    }
+  }
 }
 
 class _InfiniteLogRecordList implements _LogRecordList {

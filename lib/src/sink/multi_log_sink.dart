@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:logging/logging.dart';
 import 'package:logging_extensions/src/sink/log_sink.dart';
 
-class MultiSink extends LogSink {
-  MultiSink(this.sinks);
+class MultiLogSink extends LogSink {
+  MultiLogSink(this.sinks);
 
   final List<LogSink> sinks;
 
