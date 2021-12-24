@@ -10,7 +10,7 @@ import 'package:logging_extensions/src/level_converter/log_level_to_prefix_conve
 /// ```
 /// [E] Log message  ERROR: Error info
 /// ```
-class SimpleFormatter implements LogRecordFormatter {
+class SimpleFormatter extends LogRecordFormatter {
   SimpleFormatter({
     this.printTime = true,
     Converter<Level, AnsiPen>? toPen,

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:logging/logging.dart';
 import 'package:logging_extensions/logging_extensions.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';

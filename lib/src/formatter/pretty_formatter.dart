@@ -7,7 +7,7 @@ import 'package:logging_extensions/src/helping_extensions.dart';
 import 'package:logging_extensions/src/level_converter/log_level_to_ansi_pen_converter.dart';
 import 'package:logging_extensions/src/level_converter/log_level_to_symbol_converter.dart';
 
-class PrettyFormatter implements LogRecordFormatter {
+class PrettyFormatter extends LogRecordFormatter {
   PrettyFormatter({
     this.printTime = true,
     Converter<Level, AnsiPen>? levelToPen,

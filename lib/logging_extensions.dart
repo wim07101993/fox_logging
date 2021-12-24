@@ -1,5 +1,8 @@
 library logging_extensions;
 
+export 'package:logging/logging.dart';
+
+export 'src/formatter/json_formatter.dart';
 export 'src/formatter/log_record_formatter.dart';
 export 'src/formatter/pretty_formatter.dart';
 export 'src/formatter/simple_formatter.dart';
@@ -8,6 +11,8 @@ export 'src/level_converter/log_level_converter.dart';
 export 'src/level_converter/log_level_to_ansi_pen_converter.dart';
 export 'src/level_converter/log_level_to_prefix_converter.dart';
 export 'src/level_converter/log_level_to_symbol_converter.dart';
+export 'src/parser/json_log_record_parser.dart';
+export 'src/parser/log_record_parser.dart';
 export 'src/sink/console_sink.dart';
 export 'src/sink/file_log_sink.dart';
 export 'src/sink/io_log_sink.dart';

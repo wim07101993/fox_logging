@@ -1,6 +1,5 @@
 import 'package:ansicolor/ansicolor.dart';
-import 'package:logging_extensions/src/level_converter/log_level_converter.dart';
-import 'package:logging_extensions/src/level_converter/log_level_to_ansi_pen_converter.dart';
+import 'package:logging_extensions/logging_extensions.dart';
 import 'package:test/test.dart';
 
 void main() {
