@@ -1,7 +1,23 @@
+import 'package:logging/logging.dart';
 import 'package:logging_extensions/src/level_converter/log_level_converter.dart';
 
-class LogLevelToPrefixConverter extends LogLevelConverter<String> {
-  LogLevelToPrefixConverter({
+/// Converts a [Level] to its abbreviation.
+class LogLevelToAbbreviationConverter extends LogLevelConverter<String> {
+  /// Constructs a new [LogLevelToAbbreviationConverter].
+  ///
+  /// The default values are:
+  /// - finest: `[V]` (verbose)
+  /// - finer: `[D]` (debug)
+  /// - fine: `[F]` (fine)
+  /// - config: `[C]`
+  /// - info: `[I]`
+  /// - warning: `[W]`
+  /// - severe: `[E]`
+  /// - shout: `[WTF]`
+  ///
+  /// If the given input does not match any of the standard levels, an empty
+  /// string is returned.
+  LogLevelToAbbreviationConverter({
     String? defaultValue,
     String? finest,
     String? finer,

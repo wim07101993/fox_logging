@@ -7,7 +7,36 @@ import 'package:logging_extensions/src/helping_extensions.dart';
 import 'package:logging_extensions/src/level_converter/log_level_to_ansi_pen_converter.dart';
 import 'package:logging_extensions/src/level_converter/log_level_to_symbol_converter.dart';
 
+/// Formats a [LogRecord] to a pretty, human readable [String].
+///
+/// Formatted example:
+/// ```
+/// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/// ┃ ⛔  Null reference exception ...
+/// ┃ Error: Throw of null.
+/// ┠───────────────────────────────────────────────────────────────────────────────
+/// ┃ Time: 2021-12-26T13:36:03.017444 │ Logger: Pretty
+/// ┠───────────────────────────────────────────────────────────────────────────────
+/// ┃ #0      main (file:///home/wim/source/repos/logging_extensions/example/main.dart:38:16)
+/// ┃ #1      _delayEntrypointInvocation.<anonymous closure> (dart:isolate-patch/isolate_patch.dart:297:19)
+/// ┃ #2      _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:192:12)
+/// ┃
+/// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/// ```
+///
+/// If the level is [Level.SEVERE] or [Level.SHOUT], the borders are bold.
 class PrettyFormatter extends LogRecordFormatter {
+  /// Constructs a new [PrettyFormatter].
+  ///
+  /// - [printTime]: indicates whether the time should be visible on the logs
+  ///
+  /// - [levelToPen]: converter used to select the correct [AnsiPen] to write
+  /// ansi-colors in the formatted log. If none is provided, the
+  /// [LogLevelToAnsiPenConverter] is used.
+  ///
+  /// - [levelToSymbol]: converter used to create the symbol in the top left
+  /// corner of the log to indicate what level the log is. If none is provided,
+  /// the [LogLevelToSymbolConverter] is used.
   PrettyFormatter({
     this.printTime = true,
     Converter<Level, AnsiPen>? levelToPen,
@@ -15,9 +44,15 @@ class PrettyFormatter extends LogRecordFormatter {
   })  : levelToPen = levelToPen ?? LogLevelToAnsiPenConverter(),
         levelToSymbol = levelToSymbol ?? LogLevelToSymbolConverter();
 
+  /// Converter used to select the correct [AnsiPen] to write ansi-colors in
+  /// the formatted log.
   final Converter<Level, AnsiPen> levelToPen;
+
+  /// Converter used to create the symbol in the top left corner of the log to
+  /// indicate what level the log is.
   final Converter<Level, String> levelToSymbol;
 
+  /// Indicates whether the time should be visible on the logs.
   final bool printTime;
 
   @override

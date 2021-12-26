@@ -2,18 +2,22 @@ import 'dart:async';
 
 import 'package:logging/logging.dart';
 
+/// Listens to log-streams and writes them to a destination.
 abstract class LogSink {
-  final List<StreamSubscription> logSubscriptions = List.empty(growable: true);
+  final List<StreamSubscription> _logSubscriptions = List.empty(growable: true);
 
+  /// Starts listening for new log-records from the [logStream].
   void listenTo(Stream<LogRecord> logStream) {
-    logSubscriptions.add(logStream.listen(write));
+    _logSubscriptions.add(logStream.listen(write));
   }
 
+  /// Cancels all subscriptions to log-streams.
   Future<void> dispose() {
     return Future.wait(
-      logSubscriptions.map((subscription) => subscription.cancel()),
+      _logSubscriptions.map((subscription) => subscription.cancel()),
     );
   }
 
+  /// Writes [logRecord] to wherever this sink goes.
   Future<void> write(LogRecord logRecord);
 }

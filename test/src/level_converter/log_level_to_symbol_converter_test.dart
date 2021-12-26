@@ -64,7 +64,7 @@ void main() {
       expect(converter.finer, '🐞');
       expect(converter.fine, 'F');
       expect(converter.config, '⚙️');
-      expect(converter.info, '🛈');
+      expect(converter.info, 'ⓘ');
       expect(converter.warning, '⚠');
       expect(converter.severe, '⛔');
       expect(converter.shout, '(　ﾟДﾟ)＜!!');

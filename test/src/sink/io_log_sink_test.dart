@@ -60,10 +60,16 @@ void main() {
   });
 
   group('dispose', () {
-    late StreamSubscription mockStreamSubscription;
+    late StreamSubscription<LogRecord> mockStreamSubscription;
+    late Stream<LogRecord> mockStream;
+
     setUp(() {
+      mockStream = MockStream();
       mockStreamSubscription = MockStreamSubscription();
-      ioLogSink.logSubscriptions.add(mockStreamSubscription);
+
+      when(() => mockStream.listen(any())).thenReturn(mockStreamSubscription);
+
+      ioLogSink.listenTo(mockStream);
     });
 
     test('should dispose subscriptions', () async {

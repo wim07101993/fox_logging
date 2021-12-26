@@ -11,7 +11,7 @@ void main() {
   setUp(() {
     fakeBufferSize = faker.randomGenerator.integer(20);
 
-    logSink = MemoryLogSink(bufferSize: fakeBufferSize);
+    logSink = MemoryLogSink.fixedBuffer(bufferSize: fakeBufferSize);
   });
 
   group('constructor', () {
@@ -36,7 +36,7 @@ void main() {
 
     test('should create a list with infinite size', () {
       // arrange
-      logSink = MemoryLogSink();
+      logSink = MemoryLogSink.variableBuffer();
 
       // act
       final logEntries = List.generate(

@@ -1,7 +1,23 @@
 import 'package:ansicolor/ansicolor.dart';
+import 'package:logging/logging.dart';
 import 'package:logging_extensions/src/level_converter/log_level_converter.dart';
 
+/// Converts a [Level] to an [AnsiPen].
 class LogLevelToAnsiPenConverter extends LogLevelConverter<AnsiPen> {
+  /// Constructs a new [LogLevelToAnsiPenConverter].
+  ///
+  /// The default values are:
+  /// - finest: dark gray
+  /// - finer: gray
+  /// - fine: light gray
+  /// - config: green
+  /// - info: blue
+  /// - warning: yellow
+  /// - severe: red (background)
+  /// - shout: magenta (background)
+  ///
+  /// If the given input does not match any of the standard levels, no color
+  /// formatting is applied.
   LogLevelToAnsiPenConverter({
     AnsiPen? finest,
     AnsiPen? finer,

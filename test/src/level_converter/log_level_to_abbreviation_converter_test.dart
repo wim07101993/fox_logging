@@ -13,7 +13,7 @@ void main() {
   late String? fakeShout;
   late String? fakeDefaultValue;
 
-  late LogLevelToPrefixConverter converter;
+  late LogLevelToAbbreviationConverter converter;
 
   setUp(() {
     fakeFinest = faker.lorem.word();
@@ -26,7 +26,7 @@ void main() {
     fakeShout = faker.lorem.word();
     fakeDefaultValue = faker.lorem.word();
 
-    converter = LogLevelToPrefixConverter(
+    converter = LogLevelToAbbreviationConverter(
       finest: fakeFinest,
       finer: fakeFiner,
       fine: fakeFine,
@@ -57,7 +57,7 @@ void main() {
 
     test('should set values to defaults if not given', () {
       // act
-      converter = LogLevelToPrefixConverter();
+      converter = LogLevelToAbbreviationConverter();
 
       // assert
       expect(converter.finest, '[V]');

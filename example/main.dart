@@ -1,8 +1,19 @@
+import 'dart:developer';
+
 import 'package:logging/logging.dart';
 import 'package:logging_extensions/src/formatter/pretty_formatter.dart';
 import 'package:logging_extensions/src/formatter/simple_formatter.dart';
 
 void main() {
+  log(
+    'message',
+    time: DateTime.now(),
+    sequenceNumber: 23,
+    level: 800,
+    name: 'logger name',
+    error: 'my fancy error',
+    stackTrace: StackTrace.current,
+  );
   Logger.root.level = Level.ALL;
   hierarchicalLoggingEnabled = true;
   final simpleLogger = Logger('Simple');

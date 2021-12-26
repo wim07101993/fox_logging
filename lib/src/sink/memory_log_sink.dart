@@ -3,22 +3,35 @@ import 'dart:async';
 import 'package:logging/logging.dart';
 import 'package:logging_extensions/src/sink/log_sink.dart';
 
+/// Writes logs to an in memory buffer. Either with fixed size or unlimited
+/// size.
 class MemoryLogSink extends LogSink {
-  MemoryLogSink({
-    int? bufferSize = 200,
-  }) : _logRecords = bufferSize == null
-            ? _LogRecordList.infinite()
-            : _LogRecordList.limited(bufferSize);
+  MemoryLogSink._(this._logRecords);
+
+  /// Creates a [MemoryLogSink] with a fixed buffer size.
+  ///
+  /// When the buffer is full, the oldest item is removed to make room for the
+  /// new one.
+  MemoryLogSink.fixedBuffer({
+    int bufferSize = 200,
+  }) : this._(_LogRecordList.limited(bufferSize));
+
+  /// Creates a [MemoryLogSink] with a unlimited buffer.
+  MemoryLogSink.variableBuffer() : this._(_LogRecordList.infinite());
 
   final _LogRecordList _logRecords;
+
+  /// A copy of the current buffer.
   List<LogRecord> get logRecords => _logRecords.toList();
 
+  /// Adds [logRecord] to the [logRecords].
   @override
   Future<void> write(LogRecord logRecord) {
     _logRecords.add(logRecord);
     return Future.value();
   }
 
+  /// Clears the buffer and cancels all subscriptions to streams.
   @override
   Future<void> dispose() {
     _logRecords.clear();
