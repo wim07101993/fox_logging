@@ -1,8 +1,6 @@
 import 'dart:developer';
 
-import 'package:logging/logging.dart';
-import 'package:logging_extensions/src/formatter/pretty_formatter.dart';
-import 'package:logging_extensions/src/formatter/simple_formatter.dart';
+import 'package:logging_extensions/logging_extensions.dart';
 
 void main() {
   log(
@@ -17,8 +15,8 @@ void main() {
   Logger.root.level = Level.ALL;
   hierarchicalLoggingEnabled = true;
   final simpleLogger = Logger('Simple');
-  final simpleFormatter = SimpleFormatter();
-  simpleLogger.onRecord.map(simpleFormatter.format).listen(print);
+  final simplePrint = PrintSink(SimpleFormatter())
+    ..listenTo(simpleLogger.onRecord);
 
   simpleLogger.finest('This is a verbose message');
   simpleLogger.finer('This is a debug message');
@@ -33,9 +31,11 @@ void main() {
   );
   simpleLogger.shout('I told you to look out for null-pointers');
 
+  simplePrint.dispose();
+
   final prettyLogger = Logger('Pretty');
-  final prettyFormatter = PrettyFormatter();
-  prettyLogger.onRecord.map(prettyFormatter.format).listen(print);
+  final prettySink = PrintSink(PrettyFormatter())
+    ..listenTo(prettyLogger.onRecord);
 
   prettyLogger.finest('This is a verbose message');
   prettyLogger.finer('This is a debug message');
@@ -49,4 +49,6 @@ void main() {
     StackTrace.current,
   );
   prettyLogger.shout('I told you to look out for null-pointers');
+
+  prettySink.dispose();
 }

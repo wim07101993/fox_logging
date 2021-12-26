@@ -1,6 +1,10 @@
 name: logging_extensions
-description: Extensions for the logging package.
+description: Utilities for the logging packge like Formatter, Sinks,... It 
+  provides a flow to make logging more structured by introducing sinks and 
+  formatters.
 version: 0.0.1
+homepage: https://github.com/wim07101993/logging_extensions
+repository: https://github.com/wim07101993/logging_extensions
 
 
 environment:
@@ -13,6 +17,6 @@ dependencies:
 
 dev_dependencies:
   faker: ^2.0.0
-  lint: ^1.7.2
+  lint: ^1.8.1
   mocktail: ^0.2.0
-  test: ^1.19.5
+  test: ^1.20.1
