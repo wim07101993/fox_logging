@@ -6,10 +6,8 @@ version: 0.0.1
 homepage: https://github.com/wim07101993/logging_extensions
 repository: https://github.com/wim07101993/logging_extensions
 
-
 environment:
   sdk: '>=2.14.4 <3.0.0'
-
 
 dependencies:
   ansicolor: ^2.0.1

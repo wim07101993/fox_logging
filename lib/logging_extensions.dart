@@ -3,6 +3,7 @@ library logging_extensions;
 export 'package:logging/logging.dart';
 
 export 'src/formatter/json_formatter.dart';
+export 'src/formatter/level_dependent_formatter.dart';
 export 'src/formatter/log_record_formatter.dart';
 export 'src/formatter/pretty_formatter.dart';
 export 'src/formatter/simple_formatter.dart';
