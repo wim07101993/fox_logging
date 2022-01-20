@@ -12,6 +12,7 @@ export 'src/level_converter/log_level_converter.dart';
 export 'src/level_converter/log_level_to_abbreviation.dart';
 export 'src/level_converter/log_level_to_ansi_pen_converter.dart';
 export 'src/level_converter/log_level_to_symbol_converter.dart';
+export 'src/logger_extensions.dart';
 export 'src/parser/json_log_record_parser.dart';
 export 'src/parser/log_record_parser.dart';
 export 'src/sink/console_sink.dart';
