@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:logging/logging.dart';
@@ -11,13 +12,18 @@ import 'package:logging_extensions/src/sink/log_sink.dart';
 class PrintSink extends LogSink {
   PrintSink(this.formatter);
 
+  static const lineSplitter = LineSplitter();
+
   /// Used to format [LogRecord] before printing it.
   final LogRecordFormatter formatter;
 
   @override
   Future<void> write(LogRecord logRecord) {
-    // ignore: avoid_print
-    print(formatter.format(logRecord));
+    final lines = lineSplitter.convert(formatter.format(logRecord));
+    for (final line in lines) {
+      // ignore: avoid_print
+      print(line);
+    }
     return Future.value();
   }
 }
