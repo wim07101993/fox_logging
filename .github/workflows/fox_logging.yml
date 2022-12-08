@@ -8,14 +8,14 @@ name: Dart
 on:
   push:
     paths:
-      - "packages/fox_logging"
-      - ".github/workflows/fox_logging.yaml"
+      - "packages/fox_logging/**"
+      - ".github/workflows/fox_logging.yml"
     branches: [ master ]
       
   pull_request:
     paths:
-      - "packages/fox_logging"
-      - ".github/workflows/fox_logging.yaml"
+      - "packages/fox_logging/**"
+      - ".github/workflows/fox_logging.yml"
     branches: [ master ]
 
 jobs:
