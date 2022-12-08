@@ -41,6 +41,7 @@ jobs:
         uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
         with:
           min_coverage: 90
+          path: packages/fox_logging/coverage/lcov.info
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2.1.0
