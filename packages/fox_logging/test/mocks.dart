@@ -11,6 +11,8 @@ class MockFile extends Mock implements File {}
 
 class MockEncoding extends Mock implements Encoding {}
 
+class MockLogger extends Mock implements Logger {}
+
 class MockLogSink extends Mock implements LogSink {
   MockLogSink() {
     when(() => write(any())).thenAnswer((i) => Future.value());

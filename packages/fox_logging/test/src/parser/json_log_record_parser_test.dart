@@ -57,4 +57,56 @@ void main() {
       );
     });
   });
+
+  group('parseLevel', () {
+    test('should parse a map', () {
+      // arrange
+      final name = faker.lorem.word();
+      final value = faker.randomGenerator.integer(100);
+      final map = {
+        'name': name,
+        'value': value,
+      };
+
+      // act
+      final level = parser.parseLevel(map);
+
+      // assert
+      expect(level.name, name);
+      expect(level.value, value);
+    });
+
+    test('should parse a string', () {
+      // arrange
+      final original = faker.randomGenerator.element(Level.LEVELS);
+
+      // act
+      final level = parser.parseLevel(original.name);
+
+      // assert
+      expect(level.name, original.name);
+      expect(level.value, original.value);
+    });
+
+    test('should parse an int', () {
+      // arrange
+      final original = faker.randomGenerator.element(Level.LEVELS);
+
+      // act
+      final level = parser.parseLevel(original.value);
+
+      // assert
+      expect(level.name, original.name);
+      expect(level.value, original.value);
+    });
+
+    test('should return fine for everything else', () {
+      // act
+      final level = parser.parseLevel(faker);
+
+      // assert
+      expect(level.name, Level.FINE.name);
+      expect(level.value, Level.FINE.value);
+    });
+  });
 }

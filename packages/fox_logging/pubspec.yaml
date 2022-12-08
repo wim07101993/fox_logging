@@ -4,7 +4,7 @@ description: Utilities for the logging packge like Formatter, Sinks,... It
   formatters.
 version: 0.0.1
 homepage: https://github.com/wim07101993/fox_logging
-repository: https://github.com/wim07101993/fox_logging
+repository: https://github.com/wim07101993/fox_logging/tree/master/packages/fox_logging
 
 environment:
   sdk: '>=2.14.4 <3.0.0'

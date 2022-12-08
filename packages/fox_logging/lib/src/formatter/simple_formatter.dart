@@ -26,18 +26,18 @@ class SimpleFormatter extends LogRecordFormatter {
   /// the [LogLevelToSymbolConverter] is used.
   SimpleFormatter({
     this.printTime = true,
-    Converter<Level, AnsiPen>? toPen,
-    Converter<Level, String>? toPrefix,
-  })  : _toPen = toPen ?? LogLevelToAnsiPenConverter(),
-        _toPrefix = toPrefix ?? LogLevelToAbbreviationConverter();
+    Converter<Level, AnsiPen>? levelToPen,
+    Converter<Level, String>? levelToPrefix,
+  })  : levelToPen = levelToPen ?? LogLevelToAnsiPenConverter(),
+        levelToPrefix = levelToPrefix ?? LogLevelToAbbreviationConverter();
 
   /// Converter used to select the correct [AnsiPen] to write ansi-colors in
   /// the formatted log.
-  final Converter<Level, AnsiPen> _toPen;
+  final Converter<Level, AnsiPen> levelToPen;
 
   /// Converter used to create the symbol in the top left corner of the log to
   /// indicate what level the log is.
-  final Converter<Level, String> _toPrefix;
+  final Converter<Level, String> levelToPrefix;
 
   /// Indicates whether the time should be visible on the logs.
   final bool printTime;
@@ -45,8 +45,8 @@ class SimpleFormatter extends LogRecordFormatter {
   @override
   String format(LogRecord record) {
     final level = record.level;
-    final pen = _toPen.convert(level);
-    final prefix = _toPrefix.convert(level);
+    final pen = levelToPen.convert(level);
+    final prefix = levelToPrefix.convert(level);
 
     final colorAll = level == Level.FINEST ||
         level == Level.FINER ||

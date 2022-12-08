@@ -27,9 +27,22 @@ void main() {
 
     formatter = SimpleFormatter(
       printTime: fakePrintTime,
-      toPen: mockToPen,
-      toPrefix: mockToPrefix,
+      levelToPen: mockToPen,
+      levelToPrefix: mockToPrefix,
     );
+  });
+
+  group('constructor', () {
+    test(
+        'should use default values if no pen and prefix converters are provided',
+        () {
+      // act
+      formatter = SimpleFormatter();
+
+      // assert
+      expect(formatter.levelToPen, isA<LogLevelToAnsiPenConverter>());
+      expect(formatter.levelToPrefix, isA<LogLevelToAbbreviationConverter>());
+    });
   });
 
   group('format', () {
@@ -54,8 +67,6 @@ void main() {
       verify(() => mockToPen.convert(fakeLogRecord.level));
       verify(() => mockToPrefix.convert(fakeLogRecord.level));
     });
-
-    test('should return the log entry', () {});
   });
 
   group('IN <-> OUT tests', () {
@@ -75,7 +86,7 @@ void main() {
 
     setUp(() {
       toPen = LogLevelToAnsiPenConverter();
-      formatter = SimpleFormatter(printTime: false, toPen: toPen);
+      formatter = SimpleFormatter(printTime: false, levelToPen: toPen);
 
       inputs = [
         LogRecord(Level.FINEST, 'This is a verbose message', 'Test'),
