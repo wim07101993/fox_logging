@@ -3,6 +3,7 @@ description: Flutter extensions for logging
 version: 0.0.1
 homepage: https://github.com/wim07101993/flutter_fox_logging
 repository: https://github.com/wim07101993/flutter_fox_logging
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: ">=2.15.0 <3.0.0"
@@ -12,9 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   fox_logging:
-    git:
-      url: https://github.com/wim07101993/fox_logging.git
-      ref: master
+    path: ../fox_logging
 
 dev_dependencies:
   async:

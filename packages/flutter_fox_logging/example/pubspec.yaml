@@ -1,5 +1,7 @@
 name: log_example
 description: A new Flutter project.
+homepage: https://github.com/wim07101993/flutter_fox_logging
+repository: https://github.com/wim07101993/flutter_fox_logging
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
