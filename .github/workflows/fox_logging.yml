@@ -50,7 +50,12 @@ jobs:
 
         
   code-quality:
+    defaults:
+      run:
+        working-directory: packages/fox_logging
+        
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1.3
