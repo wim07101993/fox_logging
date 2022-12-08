@@ -1,9 +1,7 @@
 name: log_example
-description: A new Flutter project.
-homepage: https://github.com/wim07101993/flutter_fox_logging
-repository: https://github.com/wim07101993/flutter_fox_logging
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+description: An example on how the flutter logging package works.
 version: 1.0.0+1
+publish_to: none
 
 environment:
   sdk: ">=2.15.0 <3.0.0"
@@ -12,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_fox_logging:
-    path: ../
+    path: ../../packages/flutter_fox_logging
 
 dev_dependencies:
   flutter_test:
