@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:logging/logging.dart';
 import 'package:fox_logging/src/sink/log_sink.dart';
+import 'package:logging/logging.dart';
 
 /// Writes logs to an in memory buffer. Either with fixed size or unlimited
 /// size.

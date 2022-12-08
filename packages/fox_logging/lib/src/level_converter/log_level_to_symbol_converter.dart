@@ -1,5 +1,5 @@
-import 'package:logging/logging.dart';
 import 'package:fox_logging/src/level_converter/log_level_converter.dart';
+import 'package:logging/logging.dart';
 
 /// Converts a [Level] to a unicode symbol.
 class LogLevelToSymbolConverter extends LogLevelConverter<String> {

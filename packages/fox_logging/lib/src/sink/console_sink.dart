@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:logging/logging.dart';
 import 'package:fox_logging/src/formatter/log_record_formatter.dart';
 import 'package:fox_logging/src/sink/log_sink.dart';
+import 'package:logging/logging.dart';
 
 /// A [LogSink] which uses the [print] function to write logs to.
 ///

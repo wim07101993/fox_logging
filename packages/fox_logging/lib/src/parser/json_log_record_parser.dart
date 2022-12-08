@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:logging/logging.dart';
 import 'package:fox_logging/src/parser/log_record_parser.dart';
+import 'package:logging/logging.dart';
 
 /// Deserializes a json-encoded [LogRecord].
 ///

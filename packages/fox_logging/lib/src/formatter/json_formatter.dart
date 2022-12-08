@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:logging/logging.dart';
 import 'package:fox_logging/src/formatter/log_record_formatter.dart';
+import 'package:logging/logging.dart';
 
 /// Serializes a [LogRecord] to json.
 ///

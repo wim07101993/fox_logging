@@ -1,5 +1,5 @@
-import 'package:logging/logging.dart';
 import 'package:fox_logging/src/formatter/log_record_formatter.dart';
+import 'package:logging/logging.dart';
 
 /// Selects a different formatter depending on the level of the [logRecord].
 class LevelDependentFormatter extends LogRecordFormatter {

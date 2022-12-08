@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:logging/logging.dart';
 import 'package:fox_logging/src/sink/log_sink.dart';
+import 'package:logging/logging.dart';
 
 /// Combines multiple [LogSink] implementations into one.
 class MultiLogSink extends LogSink {

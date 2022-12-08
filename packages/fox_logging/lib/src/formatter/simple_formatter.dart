@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:ansicolor/ansicolor.dart';
-import 'package:logging/logging.dart';
 import 'package:fox_logging/src/formatter/log_record_formatter.dart';
 import 'package:fox_logging/src/level_converter/log_level_to_abbreviation.dart';
 import 'package:fox_logging/src/level_converter/log_level_to_ansi_pen_converter.dart';
+import 'package:logging/logging.dart';
 
 /// Formats as [LogRecord] in a simple, concise way.
 ///

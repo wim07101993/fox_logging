@@ -1,5 +1,5 @@
-import 'package:logging/logging.dart';
 import 'package:fox_logging/src/sink/log_sink.dart';
+import 'package:logging/logging.dart';
 
 /// Formats [LogRecord] to a [String]. This is used by various [LogSink]
 /// implementations.
