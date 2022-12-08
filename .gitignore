@@ -12,3 +12,5 @@ pubspec.lock
 coverage/
 coverage_badge.svg
 test/.test_coverage.dart
+.idea/libraries/Dart_Packages.xml
+.idea/libraries/Dart_SDK.xml
