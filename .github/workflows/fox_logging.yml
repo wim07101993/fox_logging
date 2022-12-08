@@ -10,11 +10,13 @@ on:
     paths:
       - "packages/fox_logging"
       - ".github/workflows/fox_logging.yaml"
+    branches: [ master ]
       
   pull_request:
     paths:
       - "packages/fox_logging"
       - ".github/workflows/fox_logging.yaml"
+    branches: [ master ]
 
 jobs:
   build:
