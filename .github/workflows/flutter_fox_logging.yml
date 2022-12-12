@@ -25,12 +25,12 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1.3
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
 
       - name: Run Tests
         run: |
-          dart pub global activate coverage
-          dart test --coverage=coverage && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
+          flutter pub global activate coverage
+          flutter test --coverage=coverage && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
                 
       - name: Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
@@ -56,13 +56,13 @@ jobs:
       - uses: dart-lang/setup-dart@v1.3
       - name: Install dependencies
         run: |
-          dart pub get
-          dart pub global activate pana
+          flutter pub get
+          flutter pub global activate pana
       - name: Verify formatting
-        run: dart format --set-exit-if-changed .
+        run: flutter format --set-exit-if-changed .
 
       - name: Analyze source code
-        run: dart analyze --fatal-infos --fatal-warnings
+        run: flutter analyze --fatal-infos --fatal-warnings
         
       - name: Verify Pub Score
         run: tool/ensure_pana_score.sh
