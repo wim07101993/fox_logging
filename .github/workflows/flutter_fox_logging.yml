@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: dart-lang/setup-dart@v1.3
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2.8.0
       - name: Install dependencies
         run: flutter pub get
 
@@ -52,8 +52,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v2
-      - uses: dart-lang/setup-dart@v1.3
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2.8.0
       - name: Install dependencies
         run: |
           flutter pub get
