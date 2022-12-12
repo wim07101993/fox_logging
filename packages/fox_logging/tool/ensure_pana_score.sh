@@ -18,7 +18,7 @@ SCORE=SCORE_ARR[0]
 TOTAL=SCORE_ARR[1]
 
 # For this package we only need a score of 110 since isolates are not available for web
-MINIMUM_SCORE=140
+MINIMUM_SCORE=130
 if ((SCORE < MINIMUM_SCORE)); then
   echo "minimum score $MINIMUM_SCORE was not met!"
   exit 1
