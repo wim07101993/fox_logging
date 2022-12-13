@@ -32,16 +32,16 @@ jobs:
           flutter pub global activate coverage
           flutter test --coverage
                 
-      - name: Check Code Coverage
-        uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
-        with:
-          min_coverage: 90
-          path: packages/flutter_fox_logging/coverage/lcov.info
+      #- name: Check Code Coverage
+      #  uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
+      #  with:
+      #    min_coverage: 90
+      #    path: packages/flutter_fox_logging/coverage/lcov.info
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2.1.0
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      #- name: Upload coverage to Codecov
+      #  uses: codecov/codecov-action@v2.1.0
+      #  with:
+      #    token: ${{ secrets.CODECOV_TOKEN }}
 
         
   code-quality:
