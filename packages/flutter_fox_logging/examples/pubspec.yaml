@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_fox_logging:
-    path: ../../packages/flutter_fox_logging
+    path: ../../flutter_fox_logging
 
 dev_dependencies:
   flutter_test:
