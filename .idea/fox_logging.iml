@@ -15,9 +15,9 @@
       <excludeFolder url="file://$MODULE_DIR$/examples/basic_log_console/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/examples/basic_log_console/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/examples/basic_log_console/build" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_fox_logging/examples/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_fox_logging/examples/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_fox_logging/examples/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_fox_logging/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_fox_logging/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/flutter_fox_logging/example/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
