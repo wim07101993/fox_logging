@@ -19,3 +19,4 @@ export 'src/sink/console_sink.dart';
 export 'src/sink/log_sink.dart';
 export 'src/sink/memory_log_sink.dart';
 export 'src/sink/multi_log_sink.dart';
+export 'src/sink/stream_log_sink.dart';

@@ -1,3 +1,7 @@
+## 0.1.1
+
+- fix: export stream log sink
+
 ## 0.1.0
 
 - feat: added stream log sink
