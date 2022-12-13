@@ -10,7 +10,7 @@ class StreamLogsScreen extends StatefulWidget implements LogsScreen {
     required this.stream,
     this.colors = const LogLevelToColorConverter(),
     this.icons = const LogLevelToIconConverter(),
-    this.visualDensity = const VisualDensity(horizontal: 0, vertical: -4),
+    this.visualDensity = const VisualDensity(vertical: -4),
   });
 
   final Stream<LogRecord> stream;

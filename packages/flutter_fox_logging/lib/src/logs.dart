@@ -12,7 +12,7 @@ class Logs extends StatefulWidget {
     super.key,
     this.colors = const LogLevelToColorConverter(),
     this.icons = const LogLevelToIconConverter(),
-    this.visualDensity = const VisualDensity(horizontal: 0, vertical: -4),
+    this.visualDensity = const VisualDensity(vertical: -4),
     this.detailScreenBuilder,
   });
 

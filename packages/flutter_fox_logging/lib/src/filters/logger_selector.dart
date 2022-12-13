@@ -35,21 +35,22 @@ class LoggerSelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text('Loggers', style: theme.textTheme.caption),
-        loggers.isEmpty
-            ? const Text('None')
-            : loggers.length == 1
-                ? Text(loggers[0])
-                : RichText(
-                    text: TextSpan(
-                      children: [
-                        ...loggers
-                            .take(loggers.length - 2)
-                            .map((l) => TextSpan(text: l)),
-                        TextSpan(text: loggers.last),
-                      ],
-                      style: theme.textTheme.bodyText2,
-                    ),
+        if (loggers.isEmpty)
+          const Text('None')
+        else
+          loggers.length == 1
+              ? Text(loggers[0])
+              : RichText(
+                  text: TextSpan(
+                    children: [
+                      ...loggers
+                          .take(loggers.length - 2)
+                          .map((l) => TextSpan(text: l)),
+                      TextSpan(text: loggers.last),
+                    ],
+                    style: theme.textTheme.bodyText2,
                   ),
+                ),
       ],
     );
   }

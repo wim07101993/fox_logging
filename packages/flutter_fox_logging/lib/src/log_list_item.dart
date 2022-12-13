@@ -10,7 +10,7 @@ class LogListItem extends StatelessWidget {
     required this.logRecord,
     this.color,
     this.icon,
-    this.visualDensity = const VisualDensity(horizontal: 0, vertical: -4),
+    this.visualDensity = const VisualDensity(vertical: -4),
     this.detailScreenBuilder,
   });
 

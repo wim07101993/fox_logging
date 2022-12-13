@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+import 'package:fox_logging/fox_logging.dart';
 
 export 'package:faker/faker.dart';
 

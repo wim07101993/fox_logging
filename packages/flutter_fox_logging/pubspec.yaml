@@ -16,11 +16,10 @@ dependencies:
 
 dev_dependencies:
   async:
+  faker:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.4
   lint:
   mocktail:
-  faker:
 
 flutter:

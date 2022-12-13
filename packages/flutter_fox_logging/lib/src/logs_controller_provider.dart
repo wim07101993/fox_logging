@@ -15,8 +15,8 @@ class LogsControllerProvider extends InheritedWidget {
   }) {
     return LogsControllerProvider(
       key: key,
-      child: Builder(builder: builder),
       controller: controller,
+      child: Builder(builder: builder),
     );
   }
 

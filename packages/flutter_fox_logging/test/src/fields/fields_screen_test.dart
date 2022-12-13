@@ -65,7 +65,6 @@ void main() {
       // arrange
       fakeController.visibleFields.value = const FieldVisibilitiesData(
         loggerName: false,
-        icon: false,
         time: false,
       );
       final findCheckbox = find.byType(Checkbox);
@@ -77,9 +76,7 @@ void main() {
 
       // act
       fakeController.visibleFields.value = const FieldVisibilitiesData(
-        loggerName: true,
         icon: true,
-        time: true,
       );
       await tester.pumpAndSettle();
 
