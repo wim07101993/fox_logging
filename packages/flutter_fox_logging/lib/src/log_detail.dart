@@ -3,11 +3,11 @@ import 'package:fox_logging/fox_logging.dart';
 
 class LogDetail extends StatelessWidget {
   const LogDetail({
-    Key? key,
+    super.key,
     required this.logRecord,
     this.color,
     this.icon,
-  }) : super(key: key);
+  });
 
   final LogRecord logRecord;
   final Color? color;

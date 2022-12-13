@@ -3,7 +3,7 @@ import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 import 'package:fox_logging/fox_logging.dart';
 
 class LevelFilterSelector extends StatelessWidget {
-  const LevelFilterSelector({Key? key}) : super(key: key);
+  const LevelFilterSelector({super.key});
 
   @override
   Widget build(BuildContext context) {

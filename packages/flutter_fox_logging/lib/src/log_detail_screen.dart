@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fox_logging/src/log_detail.dart';
 import 'package:flutter_fox_logging/src/logs_controller_provider.dart';
 import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 import 'package:fox_logging/fox_logging.dart';
 
-import 'log_detail.dart';
-
 class LogDetailScreen extends StatelessWidget {
   const LogDetailScreen({
-    Key? key,
+    super.key,
     required this.logRecord,
     required this.controller,
     this.color,
     this.icon,
-  }) : super(key: key);
+  });
 
   final LogRecord logRecord;
   final Color? color;

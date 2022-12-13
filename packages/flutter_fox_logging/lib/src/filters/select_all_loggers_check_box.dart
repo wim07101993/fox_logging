@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 
 class SelectAllLoggersCheckBox extends StatelessWidget {
-  const SelectAllLoggersCheckBox({Key? key}) : super(key: key);
+  const SelectAllLoggersCheckBox({super.key});
 
   @override
   Widget build(BuildContext context) {

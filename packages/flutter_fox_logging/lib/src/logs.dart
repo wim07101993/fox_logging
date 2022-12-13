@@ -3,19 +3,18 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_fox_logging/src/converters/log_level_to_color_converter.dart';
 import 'package:flutter_fox_logging/src/converters/log_level_to_icon_converter.dart';
+import 'package:flutter_fox_logging/src/log_list_item.dart';
 import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 import 'package:fox_logging/fox_logging.dart';
 
-import 'log_list_item.dart';
-
 class Logs extends StatefulWidget {
   const Logs({
-    Key? key,
+    super.key,
     this.colors = const LogLevelToColorConverter(),
     this.icons = const LogLevelToIconConverter(),
     this.visualDensity = const VisualDensity(horizontal: 0, vertical: -4),
     this.detailScreenBuilder,
-  }) : super(key: key);
+  });
 
   final Converter<Level, Color?> colors;
   final Converter<Level, IconData?> icons;

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fox_logging/src/log_detail_screen.dart';
 import 'package:flutter_fox_logging/src/models/field_visibilities.dart';
 import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 import 'package:fox_logging/fox_logging.dart';
 
-import 'log_detail_screen.dart';
-
 class LogListItem extends StatelessWidget {
   const LogListItem({
-    Key? key,
+    super.key,
     required this.logRecord,
     this.color,
     this.icon,
     this.visualDensity = const VisualDensity(horizontal: 0, vertical: -4),
     this.detailScreenBuilder,
-  }) : super(key: key);
+  });
 
   final LogRecord logRecord;
   final Color? color;

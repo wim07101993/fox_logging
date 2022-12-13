@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-
-import 'models/logs_controller.dart';
+import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 
 class LogsControllerProvider extends InheritedWidget {
   const LogsControllerProvider({
-    Key? key,
-    required Widget child,
+    super.key,
+    required super.child,
     required this.controller,
-  }) : super(key: key, child: child);
+  });
 
   factory LogsControllerProvider.builder({
     Key? key,

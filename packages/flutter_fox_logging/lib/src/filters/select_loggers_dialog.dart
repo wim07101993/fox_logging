@@ -6,9 +6,9 @@ import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 
 class SelectLoggersDialog extends StatelessWidget {
   const SelectLoggersDialog({
-    Key? key,
+    super.key,
     required this.controller,
-  }) : super(key: key);
+  });
 
   final LogsController controller;
 

@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 
 class FieldVisibilities extends ValueNotifier<FieldVisibilitiesData> {
   FieldVisibilities([
-    FieldVisibilitiesData fields = const FieldVisibilitiesData(),
-  ]) : super(fields);
+    super.fields = const FieldVisibilitiesData(),
+  ]);
 }
 
 class FieldVisibilitiesData {

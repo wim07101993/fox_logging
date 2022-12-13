@@ -3,7 +3,7 @@ import 'package:flutter_fox_logging/src/filters/select_loggers_dialog.dart';
 import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 
 class LoggerSelector extends StatelessWidget {
-  const LoggerSelector({Key? key}) : super(key: key);
+  const LoggerSelector({super.key});
 
   @override
   Widget build(BuildContext context) {

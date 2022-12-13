@@ -3,9 +3,9 @@ import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 
 class LoggerCheckBox extends StatelessWidget {
   const LoggerCheckBox({
-    Key? key,
+    super.key,
     required this.logger,
-  }) : super(key: key);
+  });
 
   final String logger;
 

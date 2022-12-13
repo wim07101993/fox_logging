@@ -3,7 +3,7 @@ import 'package:flutter_fox_logging/src/models/field_visibilities.dart';
 import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 
 class ShowLoggerNameCheckBox extends StatelessWidget {
-  const ShowLoggerNameCheckBox({Key? key}) : super(key: key);
+  const ShowLoggerNameCheckBox({super.key});
 
   @override
   Widget build(BuildContext context) {

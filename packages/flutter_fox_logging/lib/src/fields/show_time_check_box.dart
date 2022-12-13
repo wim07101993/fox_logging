@@ -3,7 +3,7 @@ import 'package:flutter_fox_logging/src/models/field_visibilities.dart';
 import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 
 class ShowTimeCheckBox extends StatelessWidget {
-  const ShowTimeCheckBox({Key? key}) : super(key: key);
+  const ShowTimeCheckBox({super.key});
 
   @override
   Widget build(BuildContext context) {

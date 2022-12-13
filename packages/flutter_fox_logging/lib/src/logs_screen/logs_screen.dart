@@ -6,6 +6,7 @@ import 'package:flutter_fox_logging/src/logs_screen/stream_logs_screen.dart';
 import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 import 'package:fox_logging/fox_logging.dart';
 
+// ignore: avoid_implementing_value_types
 abstract class LogsScreen implements Widget {
   const factory LogsScreen.controller({
     Key? key,

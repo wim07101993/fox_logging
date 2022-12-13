@@ -6,12 +6,12 @@ import 'package:flutter_fox_logging/flutter_fox_logging.dart';
 
 class StreamLogsScreen extends StatefulWidget implements LogsScreen {
   const StreamLogsScreen({
-    Key? key,
+    super.key,
     required this.stream,
     this.colors = const LogLevelToColorConverter(),
     this.icons = const LogLevelToIconConverter(),
     this.visualDensity = const VisualDensity(horizontal: 0, vertical: -4),
-  }) : super(key: key);
+  });
 
   final Stream<LogRecord> stream;
   final Converter<Level, Color?> colors;

@@ -7,9 +7,9 @@ import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 
 class FieldsScreen extends StatelessWidget {
   const FieldsScreen({
-    Key? key,
+    super.key,
     required this.controller,
-  }) : super(key: key);
+  });
 
   final LogsController controller;
 

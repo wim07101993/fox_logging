@@ -3,7 +3,7 @@ import 'package:flutter_fox_logging/src/models/field_visibilities.dart';
 import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 
 class ShowIconCheckBox extends StatelessWidget {
-  const ShowIconCheckBox({Key? key}) : super(key: key);
+  const ShowIconCheckBox({super.key});
 
   @override
   Widget build(BuildContext context) {
