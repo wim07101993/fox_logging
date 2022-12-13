@@ -58,7 +58,8 @@ void main() {
     expect(checkbox.value, fakeLoggerEnabled);
 
     // act
-    final oldLoggers = Map<String, bool>.from(fakeController.filter.loggers.value);
+    final oldLoggers =
+        Map<String, bool>.from(fakeController.filter.loggers.value);
     oldLoggers[fakeLoggerName] = fakeNewLoggerEnabled;
     fakeController.filter.loggers.value = oldLoggers;
     await tester.pumpAndSettle();
@@ -68,8 +69,7 @@ void main() {
     expect(checkbox.value, fakeNewLoggerEnabled);
   });
 
-  testWidgets('should change filter if checkbox value changes',
-      (tester) async {
+  testWidgets('should change filter if checkbox value changes', (tester) async {
     // arrange
     final checkboxFinder = find.byType(Checkbox);
 
@@ -79,6 +79,7 @@ void main() {
     await tester.pumpAndSettle();
 
     // assert
-    expect(fakeController.filter.loggers.value[fakeLoggerName], !fakeLoggerEnabled);
+    expect(fakeController.filter.loggers.value[fakeLoggerName],
+        !fakeLoggerEnabled);
   });
 }
