@@ -62,15 +62,16 @@ class LogListItem extends StatelessWidget {
   }
 
   Widget? _time(ThemeData theme, FieldVisibilitiesData fields) {
-    if (fields.time) {
-      final time = logRecord.time;
-      return Text(
-        '${time.year}-${time.month}-${time.day}\n'
-        '${time.hour}:${time.minute}:${time.second}.${time.millisecond}',
-        textAlign: TextAlign.end,
-        style: theme.textTheme.caption,
-      );
+    if (!fields.time) {
+      return null;
     }
+    final time = logRecord.time;
+    return Text(
+      '${time.year}-${time.month}-${time.day}\n'
+      '${time.hour}:${time.minute}:${time.second}.${time.millisecond}',
+      textAlign: TextAlign.end,
+      style: theme.textTheme.caption,
+    );
   }
 
   void onTap(BuildContext context, IconData? icon, Color? color) {

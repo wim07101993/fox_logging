@@ -18,15 +18,15 @@ void main() {
   late LogLevelToColorConverter converter;
 
   setUp(() {
-    fakeDefault = faker.color as Color?;
-    fakeFinest = faker.color as Color?;
-    fakeFiner = faker.color as Color?;
-    fakeFine = faker.color as Color?;
-    fakeConfig = faker.color as Color?;
-    fakeInfo = faker.color as Color?;
-    fakeWarning = faker.color as Color?;
-    fakeSevere = faker.color as Color?;
-    fakeShout = faker.color as Color?;
+    fakeDefault = Color(faker.randomGenerator.integer(0xFFFFFFFF));
+    fakeFinest = Color(faker.randomGenerator.integer(0xFFFFFFFF));
+    fakeFiner = Color(faker.randomGenerator.integer(0xFFFFFFFF));
+    fakeFine = Color(faker.randomGenerator.integer(0xFFFFFFFF));
+    fakeConfig = Color(faker.randomGenerator.integer(0xFFFFFFFF));
+    fakeInfo = Color(faker.randomGenerator.integer(0xFFFFFFFF));
+    fakeWarning = Color(faker.randomGenerator.integer(0xFFFFFFFF));
+    fakeSevere = Color(faker.randomGenerator.integer(0xFFFFFFFF));
+    fakeShout = Color(faker.randomGenerator.integer(0xFFFFFFFF));
 
     converter = LogLevelToColorConverter(
       defaultValue: fakeDefault,

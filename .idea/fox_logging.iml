@@ -12,6 +12,9 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/fox_logging/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/packages/fox_logging/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/packages/fox_logging/build" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/basic_log_console/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/basic_log_console/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/basic_log_console/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
