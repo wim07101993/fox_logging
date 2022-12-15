@@ -10,4 +10,7 @@ abstract class LogRecordParser {
 
   /// Parses a given [String] into a [LogRecord].
   LogRecord parse(String value);
+
+  /// Parses [String] into a list of [LogRecord].
+  Iterable<LogRecord> parseList(String value);
 }

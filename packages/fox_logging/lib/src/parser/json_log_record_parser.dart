@@ -20,15 +20,23 @@ class JsonLogRecordParser extends LogRecordParser {
   @override
   LogRecord parse(String value) {
     final jsonMap = jsonDecode(value) as Map<String, dynamic>;
+    return parseMap(jsonMap);
+  }
+
+  /// Parses a [Map] to a [LogRecord]
+  LogRecord parseMap(Map<String, dynamic> map) {
+    final stackTraceStr = map['stackTrace'];
     return _ParsedLogRecord(
-      parseLevel(jsonMap['level']),
-      jsonMap['message'] as String,
-      jsonMap['object'],
-      jsonMap['loggerName'] as String,
-      DateTime.parse(jsonMap['time'] as String),
-      jsonMap['sequenceNumber'] as int,
-      jsonMap['error'],
-      StackTrace.fromString(jsonMap['stackTrace'] as String),
+      parseLevel(map['level']),
+      map['message'] as String,
+      map['object'],
+      map['loggerName'] as String,
+      DateTime.parse(map['time'] as String),
+      map['sequenceNumber'] as int,
+      map['error'],
+      stackTraceStr is! String || stackTraceStr == ''
+          ? StackTrace.empty
+          : StackTrace.fromString(stackTraceStr),
     );
   }
 
@@ -52,6 +60,15 @@ class JsonLogRecordParser extends LogRecordParser {
       return Level.LEVELS.firstWhere((level) => level.value == value);
     } else {
       return Level.FINE;
+    }
+  }
+
+  /// Deserializes a json encoded [List] of [LogRecord].
+  @override
+  Iterable<LogRecord> parseList(String value) sync* {
+    final list = jsonDecode(value) as List;
+    for (final item in list) {
+      yield parseMap(item as Map<String, dynamic>);
     }
   }
 }
