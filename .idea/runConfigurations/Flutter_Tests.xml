@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Flutter Tests" type="FlutterTestConfigType" factoryName="Flutter Test" nameIsGenerated="true">
-    <option name="testDir" value="$PROJECT_DIR$/packages/flutter_fox_logging" />
-    <option name="useRegexp" value="false" />
-    <option name="additionalArgs" value="" />
-    <method v="2" />
-  </configuration>
-</component>
