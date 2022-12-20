@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_fox_logging/src/converters/log_level_to_color_converter.dart';
-import 'package:flutter_fox_logging/src/converters/log_level_to_icon_converter.dart';
 import 'package:flutter_fox_logging/src/field_visibilities.dart';
+import 'package:flutter_fox_logging/src/level_converter/log_level_to_color_converter.dart';
+import 'package:flutter_fox_logging/src/level_converter/log_level_to_icon_converter.dart';
 import 'package:flutter_fox_logging/src/log_list_item.dart';
 import 'package:fox_logging/fox_logging.dart';
 

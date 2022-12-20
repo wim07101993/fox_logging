@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fox_logging/src/filter/level_filter_selector.dart';
 import 'package:flutter_fox_logging/src/filter/logger_selector.dart';
-import 'package:flutter_fox_logging/src/logs_controller.dart';
+import 'package:flutter_fox_logging/src/logs_controller/logs_controller.dart';
 
 class LogsFilter extends StatelessWidget {
   const LogsFilter({

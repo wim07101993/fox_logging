@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:fox_logging/fox_logging.dart';
 
@@ -59,50 +57,4 @@ class LogsController extends ChangeNotifier
     return logRecord.level.value >= minimumLevel.value &&
         (loggers.isEmpty || (loggers[logRecord.loggerName] ?? false));
   }
-}
-
-class StreamedLogsController extends LogsController {
-  StreamedLogsController({
-    required Stream<LogRecord> logs,
-  }) : super() {
-    _subscription = logs.listen((logRecord) => super.addLog(logRecord));
-  }
-
-  late final StreamSubscription _subscription;
-
-  @override
-  void dispose() {
-    _subscription.cancel();
-    super.dispose();
-  }
-}
-
-class LoggersListener extends ChangeNotifier
-    implements ValueListenable<Iterable<String>> {
-  LoggersListener({
-    required this.logsController,
-  });
-
-  final LogsController logsController;
-
-  @override
-  Iterable<String> get value => logsController._allLogs
-      .toIterable()
-      .map((logRecord) => logRecord.loggerName)
-      .toSet();
-}
-
-class LevelsListener extends ChangeNotifier
-    implements ValueListenable<Iterable<Level>> {
-  LevelsListener({
-    required this.logsController,
-  });
-
-  final LogsController logsController;
-
-  @override
-  Iterable<Level> get value => logsController._allLogs
-      .toIterable()
-      .map((logRecord) => logRecord.level)
-      .toSet();
 }

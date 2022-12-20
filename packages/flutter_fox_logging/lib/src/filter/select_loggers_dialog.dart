@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fox_logging/src/labeled_check_box.dart';
-import 'package:flutter_fox_logging/src/logs_controller.dart';
+import 'package:flutter_fox_logging/src/logs_controller/logs_controller.dart';
 import 'package:fox_logging/fox_logging.dart';
 
 class SelectLoggersDialog extends StatelessWidget {

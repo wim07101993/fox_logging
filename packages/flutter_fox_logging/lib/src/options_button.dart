@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fox_logging/src/field_visibilities.dart';
 import 'package:flutter_fox_logging/src/fields_screen.dart';
 import 'package:flutter_fox_logging/src/filter/filter_screen.dart';
-import 'package:flutter_fox_logging/src/logs_controller.dart';
+import 'package:flutter_fox_logging/src/logs_controller/logs_controller.dart';
 
 class OptionsButton extends StatelessWidget {
   const OptionsButton({

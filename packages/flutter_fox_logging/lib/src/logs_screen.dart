@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_fox_logging/flutter_fox_logging.dart';
 import 'package:flutter_fox_logging/src/field_visibilities.dart';
-import 'package:flutter_fox_logging/src/filter/search_button.dart';
+import 'package:flutter_fox_logging/src/level_converter/log_level_to_color_converter.dart';
+import 'package:flutter_fox_logging/src/level_converter/log_level_to_icon_converter.dart';
 import 'package:flutter_fox_logging/src/listenable_builder.dart';
 import 'package:flutter_fox_logging/src/options_button.dart';
 

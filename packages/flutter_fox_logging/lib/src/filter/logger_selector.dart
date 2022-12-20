@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fox_logging/src/filter/select_loggers_dialog.dart';
-import 'package:flutter_fox_logging/src/logs_controller.dart';
+import 'package:flutter_fox_logging/src/logs_controller/logs_controller.dart';
 
 class LoggerSelector extends StatelessWidget {
   const LoggerSelector({
