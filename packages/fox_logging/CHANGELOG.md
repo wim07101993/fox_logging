@@ -1,3 +1,7 @@
+## 0.2.0
+
+- feat: added parse list to json log record parser
+
 ## 0.1.1
 
 - fix: export stream log sink
