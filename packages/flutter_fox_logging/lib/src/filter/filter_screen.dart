@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fox_logging/flutter_fox_logging.dart';
 import 'package:flutter_fox_logging/src/filter/logs_filter.dart';
+import 'package:flutter_fox_logging/src/logs_controller/logs_controller.dart';
 
 class FilterScreen extends StatelessWidget {
   const FilterScreen({
