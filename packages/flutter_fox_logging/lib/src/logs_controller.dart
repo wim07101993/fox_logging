@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:fox_logging/fox_logging.dart';
 
 class LogsController extends ChangeNotifier
