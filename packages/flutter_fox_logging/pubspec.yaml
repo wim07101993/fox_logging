@@ -1,6 +1,6 @@
 name: flutter_fox_logging
 description: A widget library for the `fox_logging` package. Can be used to display the logs of an app.
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/wim07101993/fox_logging
 repository: https://github.com/wim07101993/fox_logging/tree/master/packages/flutter_fox_logging
 
