@@ -11,7 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  fox_logging: ">=0.0.0 <1.0.0"
+  fox_logging:
+    path: ../fox_logging
 
 dev_dependencies:
   async:

@@ -53,9 +53,16 @@ void main() {
     logger.shout('I told you to look out for null-pointers');
   });
 
-  runApp(MaterialApp(
-    home: LogsScreen.stream(
-      stream: StreamGroup.merge([logger.onRecord, secondLogger.onRecord]),
+  runApp(
+    MaterialApp(
+      home: LogsScreen(
+        controller: StreamedLogsController(
+          logs: StreamGroup.merge([
+            logger.onRecord,
+            secondLogger.onRecord,
+          ]),
+        ),
+      ),
     ),
-  ));
+  );
 }

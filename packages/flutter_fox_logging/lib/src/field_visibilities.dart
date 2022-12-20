@@ -1,13 +1,5 @@
-import 'package:flutter/foundation.dart';
-
-class FieldVisibilities extends ValueNotifier<FieldVisibilitiesData> {
-  FieldVisibilities([
-    super.fields = const FieldVisibilitiesData(),
-  ]);
-}
-
-class FieldVisibilitiesData {
-  const FieldVisibilitiesData({
+class LogFieldVisibilities {
+  const LogFieldVisibilities({
     this.icon = false,
     this.loggerName = true,
     this.time = true,
@@ -17,12 +9,12 @@ class FieldVisibilitiesData {
   final bool loggerName;
   final bool time;
 
-  FieldVisibilitiesData copyWith({
+  LogFieldVisibilities copyWith({
     bool? icon,
     bool? loggerName,
     bool? time,
   }) {
-    return FieldVisibilitiesData(
+    return LogFieldVisibilities(
       icon: icon ?? this.icon,
       loggerName: loggerName ?? this.loggerName,
       time: time ?? this.time,

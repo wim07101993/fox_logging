@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fox_logging/src/log_list_item.dart';
-import 'package:flutter_fox_logging/src/models/logs_controller.dart';
+import 'package:flutter_fox_logging/flutter_fox_logging.dart';
 
 class LogSearchDelegate extends SearchDelegate {
+  LogSearchDelegate({
+    required this.logs,
+  });
+
+  final LogsController logs;
+
+  Iterable<LogRecord> get queriedLogs => logs.value
+      .where((logRecord) => query.isEmpty || logRecord.message.contains(query));
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -24,11 +32,15 @@ class LogSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final controller = LogsController.of(context);
-    final logs = controller.value.toList(growable: false);
-    return ListView.builder(
-      itemCount: logs.length,
-      itemBuilder: (context, i) => LogListItem(logRecord: logs[i]),
+    return ValueListenableBuilder<Iterable<LogRecord>>(
+      valueListenable: logs,
+      builder: (context, iterable, _) {
+        final logs = queriedLogs.toList(growable: false);
+        return ListView.builder(
+          itemCount: logs.length,
+          itemBuilder: (context, i) => LogListItem(logRecord: logs[i]),
+        );
+      },
     );
   }
 

@@ -1,32 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fox_logging/src/filters/select_loggers_dialog.dart';
-import 'package:flutter_fox_logging/src/models/logs_controller.dart';
+import 'package:flutter_fox_logging/src/filter/select_loggers_dialog.dart';
+import 'package:flutter_fox_logging/src/logs_controller.dart';
 
 class LoggerSelector extends StatelessWidget {
-  const LoggerSelector({super.key});
+  const LoggerSelector({
+    super.key,
+    required this.controller,
+  });
+
+  final LogsController controller;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final controller = LogsController.of(context);
-    return ValueListenableBuilder<Map<String, bool>>(
-      valueListenable: controller.filter.loggers,
-      builder: (context, loggers, oldWidget) => Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Expanded(
-            child: _loggers(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Expanded(
+          child: ValueListenableBuilder<Map<String, bool>>(
+            valueListenable: controller.loggers,
+            builder: (context, loggers, _) => _loggers(
               theme,
               loggers.entries.where((e) => e.value).map((e) => e.key).toList(),
             ),
           ),
-          const SizedBox(width: 16),
-          ElevatedButton(
-            onPressed: () => _selectLogger(context),
-            child: const Text('Select'),
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(width: 16),
+        ElevatedButton(
+          onPressed: () => _selectLogger(context),
+          child: const Text('Select'),
+        ),
+      ],
     );
   }
 
@@ -44,8 +48,8 @@ class LoggerSelector extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       ...loggers
-                          .take(loggers.length - 2)
-                          .map((l) => TextSpan(text: l)),
+                          .take(loggers.length - 1)
+                          .map((l) => TextSpan(text: '$l, ')),
                       TextSpan(text: loggers.last),
                     ],
                     style: theme.textTheme.bodyText2,
@@ -56,7 +60,6 @@ class LoggerSelector extends StatelessWidget {
   }
 
   void _selectLogger(BuildContext context) {
-    final controller = LogsController.of(context);
     showDialog(
       context: context,
       builder: (context) => SelectLoggersDialog(controller: controller),

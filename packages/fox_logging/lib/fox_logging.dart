@@ -16,6 +16,7 @@ export 'src/logger_extensions.dart';
 export 'src/parser/json_log_record_parser.dart';
 export 'src/parser/log_record_parser.dart';
 export 'src/sink/console_sink.dart';
+export 'src/sink/log_record_list.dart';
 export 'src/sink/log_sink.dart';
 export 'src/sink/memory_log_sink.dart';
 export 'src/sink/multi_log_sink.dart';

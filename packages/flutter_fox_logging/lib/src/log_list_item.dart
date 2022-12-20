@@ -1,7 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_fox_logging/src/field_visibilities.dart';
 import 'package:flutter_fox_logging/src/log_detail_screen.dart';
-import 'package:flutter_fox_logging/src/models/field_visibilities.dart';
-import 'package:flutter_fox_logging/src/models/logs_controller.dart';
 import 'package:fox_logging/fox_logging.dart';
 
 class LogListItem extends StatelessWidget {
@@ -12,6 +12,7 @@ class LogListItem extends StatelessWidget {
     this.icon,
     this.visualDensity = const VisualDensity(vertical: -4),
     this.detailScreenBuilder,
+    this.visibleFields,
   });
 
   final LogRecord logRecord;
@@ -19,31 +20,34 @@ class LogListItem extends StatelessWidget {
   final IconData? icon;
   final VisualDensity visualDensity;
   final Widget Function(LogRecord log)? detailScreenBuilder;
+  final ValueListenable<LogFieldVisibilities>? visibleFields;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final controller = LogsController.of(context);
-    return ValueListenableBuilder<FieldVisibilitiesData>(
-      valueListenable: controller.visibleFields,
-      builder: (context, fields, oldWidget) => ListTile(
-        visualDensity: visualDensity,
-        leading: _icon(theme, fields, icon, color),
-        title: _title(color),
-        subtitle: _subtitle(fields),
-        trailing: _time(theme, fields),
-        onTap: () => onTap(context, icon, color),
-      ),
+    final visibleFields = this.visibleFields;
+    if (visibleFields == null) {
+      return _listTile(context, const LogFieldVisibilities());
+    }
+    return ValueListenableBuilder<LogFieldVisibilities>(
+      valueListenable: visibleFields,
+      builder: (context, visibleFields, _) => _listTile(context, visibleFields),
     );
   }
 
-  Widget? _icon(
-    ThemeData theme,
-    FieldVisibilitiesData fields,
-    IconData? icon,
-    Color? color,
-  ) {
-    if (!fields.icon) {
+  Widget _listTile(BuildContext context, LogFieldVisibilities visibleFields) {
+    final theme = Theme.of(context);
+    return ListTile(
+      visualDensity: visualDensity,
+      leading: _icon(theme, icon, color, visibleFields.icon),
+      title: _title(color),
+      subtitle: _loggerName(visibleFields.loggerName),
+      trailing: _time(theme, visibleFields.time),
+      onTap: () => onTap(context, icon, color),
+    );
+  }
+
+  Widget? _icon(ThemeData theme, IconData? icon, Color? color, bool isVisible) {
+    if (!isVisible) {
       return null;
     } else if (icon == null) {
       return SizedBox(width: theme.iconTheme.size);
@@ -56,12 +60,12 @@ class LogListItem extends StatelessWidget {
     return Text(logRecord.message, style: TextStyle(color: color));
   }
 
-  Widget? _subtitle(FieldVisibilitiesData fields) {
-    return fields.loggerName ? Text(logRecord.loggerName) : null;
+  Widget? _loggerName(bool isVisible) {
+    return isVisible ? Text(logRecord.loggerName) : null;
   }
 
-  Widget? _time(ThemeData theme, FieldVisibilitiesData fields) {
-    if (!fields.time) {
+  Widget? _time(ThemeData theme, bool isVisible) {
+    if (!isVisible) {
       return null;
     }
     final time = logRecord.time;
@@ -75,11 +79,9 @@ class LogListItem extends StatelessWidget {
 
   void onTap(BuildContext context, IconData? icon, Color? color) {
     final detailScreenBuilder = this.detailScreenBuilder;
-    final controller = LogsController.of(context);
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       if (detailScreenBuilder == null) {
         return LogDetailScreen(
-          controller: controller,
           logRecord: logRecord,
           color: color,
           icon: icon,

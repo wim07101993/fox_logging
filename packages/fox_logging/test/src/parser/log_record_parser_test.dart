@@ -4,10 +4,10 @@ import 'package:test/test.dart';
 import '../../faker_extensions.dart';
 
 class _LogRecordParser extends LogRecordParser {
-  const _LogRecordParser(this.returnValue, [this.listReturnValue = const []]);
+  const _LogRecordParser(this.returnValue);
 
   final LogRecord returnValue;
-  final Iterable<LogRecord> listReturnValue;
+  Iterable<LogRecord> get listReturnValue => const [];
 
   @override
   LogRecord parse(String value) => returnValue;

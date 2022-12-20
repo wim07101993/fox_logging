@@ -1,5 +1,5 @@
-import 'package:fox_logging/fox_logging.dart';
 import 'package:fox_logging/src/sink/stream_log_sink.dart';
+import 'package:logging/logging.dart';
 import 'package:test/test.dart';
 
 import '../../faker_extensions.dart';
