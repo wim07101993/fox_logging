@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:logging/logging.dart';
 
 /// Listens to log-streams and writes them to a destination.
-abstract class LogSink {
+mixin LogSinkMixin {
   final List<StreamSubscription> _logSubscriptions = List.empty(growable: true);
 
   /// Starts listening for new log-records from the [logStream].
@@ -21,3 +21,9 @@ abstract class LogSink {
   /// Writes [logRecord] to wherever this sink goes.
   Future<void> write(LogRecord logRecord);
 }
+
+/// Listens to log-streams and writes them to a destination.
+///
+/// This class is deprecated, use LogSinkMixin instead.
+@Deprecated('Use LogSinkMixin instead')
+abstract class LogSink with LogSinkMixin {}

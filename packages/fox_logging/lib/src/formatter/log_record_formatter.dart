@@ -1,7 +1,6 @@
-import 'package:fox_logging/src/sink/log_sink.dart';
 import 'package:logging/logging.dart';
 
-/// Formats [LogRecord] to a [String]. This is used by various [LogSink]
+/// Formats [LogRecord] to a [String]. This is used by various [LogSinkMixin]
 /// implementations.
 abstract class LogRecordFormatter {
   /// Const constructor for the extending classes.

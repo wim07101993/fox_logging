@@ -1,8 +1,7 @@
 name: fox_logging
-description: Utilities for the logging packge like Formatter, Sinks,... It 
+description: Utilities for the logging package like Formatter, Sinks,... It 
   provides a flow to make logging more structured by introducing sinks and 
   formatters.
-version: 0.2.0
 homepage: https://github.com/wim07101993/fox_logging
 repository: https://github.com/wim07101993/fox_logging/tree/master/packages/fox_logging
 

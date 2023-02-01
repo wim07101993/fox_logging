@@ -10,7 +10,7 @@ import '../../mocks.dart';
 void main() {
   late _MockLogWriter mockWriter;
 
-  late LogSink logSink;
+  late LogSinkMixin logSink;
 
   setUpAll(() {
     registerFallbackValue(faker.logRecord());
@@ -83,7 +83,7 @@ void main() {
   });
 }
 
-class _LogSink extends LogSink {
+class _LogSink with LogSinkMixin {
   _LogSink(this.writer);
 
   final _MockLogWriter writer;

@@ -13,7 +13,7 @@ class MockEncoding extends Mock implements Encoding {}
 
 class MockLogger extends Mock implements Logger {}
 
-class MockLogSink extends Mock implements LogSink {
+class MockLogSink extends Mock implements LogSinkMixin {
   MockLogSink() {
     when(() => write(any())).thenAnswer((i) => Future.value());
   }

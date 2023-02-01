@@ -6,7 +6,7 @@ import 'package:logging/logging.dart';
 
 /// Writes logs to an in memory buffer. Either with fixed size or unlimited
 /// size.
-class MemoryLogSink extends LogSink {
+class MemoryLogSink with LogSinkMixin {
   MemoryLogSink._(this._logRecords);
 
   /// Creates a [MemoryLogSink] with a fixed buffer size.
