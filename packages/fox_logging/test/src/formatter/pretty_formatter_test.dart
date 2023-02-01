@@ -112,8 +112,8 @@ void main() {
         expect(formatted, '''
 ┌───────────────────────────────────────────────────────────────────────────────
 │ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
-│ Payload: ${fakeRecord.object.toString()}
-│ Error: ${fakeRecord.error.toString()}
+│ Payload: ${fakeRecord.object}
+│ Error: ${fakeRecord.error}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 │ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -138,8 +138,8 @@ void main() {
         expect(formatted, '''
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
-┃ Payload: ${fakeRecord.object.toString()}
-┃ Error: ${fakeRecord.error.toString()}
+┃ Payload: ${fakeRecord.object}
+┃ Error: ${fakeRecord.error}
 ┠───────────────────────────────────────────────────────────────────────────────
 ┃ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
 ┠───────────────────────────────────────────────────────────────────────────────
@@ -181,8 +181,8 @@ void main() {
         expect(formatted, '''
 ┌───────────────────────────────────────────────────────────────────────────────
 │ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
-│ Payload: ${fakeRecord.object.toString()}
-│ Error: ${fakeRecord.error.toString()}
+│ Payload: ${fakeRecord.object}
+│ Error: ${fakeRecord.error}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 │ Logger: ${fakeRecord.loggerName}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -207,8 +207,8 @@ void main() {
         expect(formatted, '''
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
-┃ Payload: ${fakeRecord.object.toString()}
-┃ Error: ${fakeRecord.error.toString()}
+┃ Payload: ${fakeRecord.object}
+┃ Error: ${fakeRecord.error}
 ┠───────────────────────────────────────────────────────────────────────────────
 ┃ Logger: ${fakeRecord.loggerName}
 ┠───────────────────────────────────────────────────────────────────────────────
@@ -242,7 +242,7 @@ void main() {
         expect(formatted, '''
 ┌───────────────────────────────────────────────────────────────────────────────
 │ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
-│ Payload: ${fakeRecord.object.toString()}
+│ Payload: ${fakeRecord.object}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 │ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
 └───────────────────────────────────────────────────────────────────────────────''');
@@ -265,7 +265,7 @@ void main() {
         expect(formatted, '''
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
-┃ Payload: ${fakeRecord.object.toString()}
+┃ Payload: ${fakeRecord.object}
 ┠───────────────────────────────────────────────────────────────────────────────
 ┃ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''');
@@ -297,8 +297,8 @@ void main() {
         expect(formatted, '''
 ┌───────────────────────────────────────────────────────────────────────────────
 │ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
-│ Payload: ${fakeRecord.object.toString()}
-│ Error: ${fakeRecord.error.toString()}
+│ Payload: ${fakeRecord.object}
+│ Error: ${fakeRecord.error}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 │ Time: ${fakeRecord.time.toIso8601String()}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -323,8 +323,8 @@ void main() {
         expect(formatted, '''
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
-┃ Payload: ${fakeRecord.object.toString()}
-┃ Error: ${fakeRecord.error.toString()}
+┃ Payload: ${fakeRecord.object}
+┃ Error: ${fakeRecord.error}
 ┠───────────────────────────────────────────────────────────────────────────────
 ┃ Time: ${fakeRecord.time.toIso8601String()}
 ┠───────────────────────────────────────────────────────────────────────────────
@@ -356,7 +356,7 @@ void main() {
         expect(formatted, '''
 ┌───────────────────────────────────────────────────────────────────────────────
 │ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
-│ Error: ${fakeRecord.error.toString()}
+│ Error: ${fakeRecord.error}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 │ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
@@ -379,7 +379,7 @@ void main() {
         expect(formatted, '''
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
-┃ Error: ${fakeRecord.error.toString()}
+┃ Error: ${fakeRecord.error}
 ┠───────────────────────────────────────────────────────────────────────────────
 ┃ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
 ┠───────────────────────────────────────────────────────────────────────────────

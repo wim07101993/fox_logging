@@ -10,7 +10,7 @@ import 'package:logging/logging.dart';
 ///
 /// Formatted example:
 /// ```
-/// [E] 2021-12-26T13:36:03.012282 Simple: Null reference exception ... ERROR: Throw of null.
+/// [E] 2021-12-26T13:36:03.012282 Simple: Type error ... ERROR: Throw of Something.
 /// ```
 class SimpleFormatter extends LogRecordFormatter {
   /// Constructs a new [SimpleFormatter].

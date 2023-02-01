@@ -23,10 +23,10 @@ void main() {
   simpleLogger.fine('This is a fine message');
   simpleLogger.config('Configured api');
   simpleLogger.info('This actually looks quiet nice');
-  simpleLogger.warning('Null-pointers ahead');
+  simpleLogger.warning('Type errors ahead');
   simpleLogger.severe(
-    'Null reference exception ...',
-    NullThrownError(),
+    'type error ...',
+    TypeError(),
     StackTrace.current,
   );
   simpleLogger.shout('I told you to look out for null-pointers');
@@ -42,10 +42,10 @@ void main() {
   prettyLogger.fine('This is a fine message');
   prettyLogger.config('Configured api');
   prettyLogger.info('This actually looks quiet nice');
-  prettyLogger.warning('Null-pointers ahead');
+  prettyLogger.warning('Type errors ahead');
   prettyLogger.severe(
-    'Null reference exception ...',
-    NullThrownError(),
+    'Type error ...',
+    TypeError(),
     StackTrace.current,
   );
   prettyLogger.shout('I told you to look out for null-pointers');

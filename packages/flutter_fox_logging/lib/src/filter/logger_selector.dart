@@ -38,7 +38,7 @@ class LoggerSelector extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text('Loggers', style: theme.textTheme.caption),
+        Text('Loggers', style: theme.textTheme.bodySmall),
         if (loggers.isEmpty)
           const Text('None')
         else
@@ -52,7 +52,7 @@ class LoggerSelector extends StatelessWidget {
                           .map((l) => TextSpan(text: '$l, ')),
                       TextSpan(text: loggers.last),
                     ],
-                    style: theme.textTheme.bodyText2,
+                    style: theme.textTheme.bodyMedium,
                   ),
                 ),
       ],

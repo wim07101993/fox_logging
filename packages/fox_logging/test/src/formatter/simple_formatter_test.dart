@@ -94,11 +94,10 @@ void main() {
         LogRecord(Level.FINE, 'This is a fine message', 'Test'),
         LogRecord(Level.CONFIG, 'App configuration successful', ''),
         LogRecord(Level.INFO, 'App started', ''),
-        LogRecord(Level.WARNING, 'What out, null-references ahead', ''),
-        LogRecord(Level.SEVERE, 'Null reference exception', 'Error logger',
-            NullThrownError(), StackTrace.current, Zone.current, Object()),
-        LogRecord(
-            Level.SHOUT, 'I told you there were null references ahead', ''),
+        LogRecord(Level.WARNING, 'What out, type errors ahead', ''),
+        LogRecord(Level.SEVERE, 'Type error', 'Error logger', TypeError(),
+            StackTrace.current, Zone.current, Object()),
+        LogRecord(Level.SHOUT, 'I told you there were type errors ahead', ''),
       ];
 
       expected = [
@@ -107,9 +106,9 @@ void main() {
         '[F] Test: This is a fine message',
         '[C] App configuration successful',
         '[I] App started',
-        '[W] What out, null-references ahead',
-        '[E] Error logger: Null reference exception ERROR: ${NullThrownError()}',
-        '[WTF] I told you there were null references ahead',
+        '[W] What out, type errors ahead',
+        '[E] Error logger: Type error ERROR: ${TypeError()}',
+        '[WTF] I told you there were type errors ahead',
       ];
     });
 

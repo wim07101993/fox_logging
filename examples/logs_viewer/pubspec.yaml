@@ -14,7 +14,6 @@ dependencies:
   flutter_fox_logging:
     path: ../../packages/flutter_fox_logging
   fox_logging:
-    path: ../../packages/fox_logging
   provider: ">=6.0.0 <7.0.0"
 
 dev_dependencies:

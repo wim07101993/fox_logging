@@ -12,7 +12,7 @@ import 'package:logging/logging.dart';
 /// Formatted example:
 /// ```
 /// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-/// ┃ ⛔  Null reference exception ...
+/// ┃ ⛔  Type Error ...
 /// ┃ Error: Throw of null.
 /// ┠───────────────────────────────────────────────────────────────────────────────
 /// ┃ Time: 2021-12-26T13:36:03.017444 │ Logger: Pretty
@@ -95,11 +95,11 @@ class PrettyFormatter extends LogRecordFormatter {
 
     final object = record.object;
     if (object != null) {
-      buffer.writeln('$verticalOuterBorder Payload: ${object.toString()}');
+      buffer.writeln('$verticalOuterBorder Payload: $object');
     }
     final error = record.error;
     if (error != null) {
-      buffer.writeln('$verticalOuterBorder Error: ${error.toString()}');
+      buffer.writeln('$verticalOuterBorder Error: $error');
     }
 
     final loggerName = record.loggerName;

@@ -73,7 +73,7 @@ class LogListItem extends StatelessWidget {
       '${time.year}-${time.month}-${time.day}\n'
       '${time.hour}:${time.minute}:${time.second}.${time.millisecond}',
       textAlign: TextAlign.end,
-      style: theme.textTheme.caption,
+      style: theme.textTheme.bodySmall,
     );
   }
 

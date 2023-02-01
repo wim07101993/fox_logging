@@ -25,8 +25,8 @@ void main() {
     secondLogger.warning('Null-pointers ahead');
     await Future.delayed(const Duration(seconds: 1));
     logger.severe(
-      'Null reference exception ...',
-      NullThrownError(),
+      'Type error ...',
+      TypeError(),
       StackTrace.current,
     );
     await Future.delayed(const Duration(seconds: 1));
@@ -42,11 +42,11 @@ void main() {
     await Future.delayed(const Duration(seconds: 1));
     secondLogger.info('This actually looks quiet nice');
     await Future.delayed(const Duration(seconds: 1));
-    logger.warning('Null-pointers ahead');
+    logger.warning('Type errors ahead');
     await Future.delayed(const Duration(seconds: 1));
     secondLogger.severe(
-      'Null reference exception ...',
-      NullThrownError(),
+      'Type error ...',
+      TypeError(),
       StackTrace.current,
     );
     await Future.delayed(const Duration(seconds: 1));

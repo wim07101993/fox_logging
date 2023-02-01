@@ -54,7 +54,7 @@ class LogDetail extends StatelessWidget {
           child: Text(
             logRecord.message,
             softWrap: true,
-            style: theme.textTheme.headline5,
+            style: theme.textTheme.headlineSmall,
           ),
         ),
       ],
@@ -67,7 +67,7 @@ class LogDetail extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(name, style: theme.textTheme.caption),
+          Text(name, style: theme.textTheme.bodySmall),
           Text(value),
         ],
       ),
