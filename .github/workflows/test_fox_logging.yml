@@ -24,24 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: "../.github/template/ensure_code_quality"
       
-      - name: Install dart
-        uses: dart-lang/setup-dart@v1.4
-        
-      - name: Install dependencies
-        run: |
-          dart pub get
-          dart pub global activate pana
-          
-      - name: Verify formatting
-        run: dart format --set-exit-if-changed .
-
-      - name: Analyze source code
-        run: dart analyze --fatal-infos --fatal-warnings
-        
-      - name: Verify Pub Score
-        run: tool/ensure_pana_score.sh
         
   test:
     defaults:
