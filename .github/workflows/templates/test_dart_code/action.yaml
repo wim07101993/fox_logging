@@ -23,14 +23,10 @@ runs:
       run: dart test --coverage=coverage && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
 
     - name: Check Code Coverage
-      uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
-      working-directory: ${{ inputs.working-directory }}
+      uses: VeryGoodOpenSource/very_good_coverage@v2.1.0
       with:
         min_coverage: 90
-        path: coverage/lcov.info
+        path: ${{ inputs.working-directory }}/coverage/lcov.info
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2.1.0
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-      
+      uses: codecov/codecov-action@v3.1.1      
