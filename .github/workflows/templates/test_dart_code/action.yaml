@@ -15,7 +15,7 @@ runs:
       working-directory: ${{ inputs.working-directory }}
       run: |
         dart pub get
-        dart pub global activate coverage~
+        dart pub global activate coverage
         
     - name: Run Tests
       shell: bash
