@@ -1,5 +1,9 @@
 name: Ensure code quality
 
+inputs:
+  working-directory:
+    required: true
+    
 runs:
   using: "composite"
   steps:
@@ -8,18 +12,22 @@ runs:
 
     - name: Install dependencies
       shell: bash
+      working-directory: ${{ inputs.working-directory }}
       run: |
         dart pub get
         dart pub global activate pana
 
     - name: Verify formatting
       shell: bash
+      working-directory: ${{ inputs.working-directory }}
       run: dart format --set-exit-if-changed .
 
     - name: Analyze source code
       shell: bash
+      working-directory: ${{ inputs.working-directory }}
       run: dart analyze --fatal-infos --fatal-warnings
 
     - name: Verify Pub Score
       shell: bash
+      working-directory: ${{ inputs.working-directory }}
       run: tool/ensure_pana_score.sh
