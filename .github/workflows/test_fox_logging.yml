@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: "./.github/workflows/templates/ensure_code_quality"
+      - uses: "../../.github/workflows/templates/ensure_code_quality"
       
         
   test:
