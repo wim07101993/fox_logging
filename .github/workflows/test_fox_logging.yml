@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Ensure code quality
+      - name: Run tests
         uses: "./.github/workflows/templates/test_dart_code"
         with:
           working-directory: packages/fox_logging
