@@ -1,6 +1,7 @@
 name: Test Fox Logging
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "packages/fox_logging/**"
