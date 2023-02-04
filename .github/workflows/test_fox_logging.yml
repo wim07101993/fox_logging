@@ -6,14 +6,14 @@ on:
     paths:
       - "packages/fox_logging/**"
       - ".github/workflows/test_fox_logging.yml"
-      - ".github/workflows/temmplates/ensure_code_quality/**"
+      - ".github/workflows/templates/ensure_code_quality/**"
     branches: [ master ]
       
   pull_request:
     paths:
       - "packages/fox_logging/**"
       - ".github/workflows/test_fox_logging.yml"
-      - ".github/workflows/temmplates/ensure_code_quality/**"
+      - ".github/workflows/templates/ensure_code_quality/**"
     branches: [ master ]
 
 jobs:
@@ -25,7 +25,8 @@ jobs:
         working-directory: packages/fox_logging
     steps:
       - uses: actions/checkout@v3
-      - uses: "./.github/workflows/templates/ensure_code_quality"
+      - name: Ensure code quality
+        uses: "./.github/workflows/templates/ensure_code_quality"
         with:
           working-directory: packages/fox_logging
       
