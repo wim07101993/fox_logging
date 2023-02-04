@@ -1,7 +1,13 @@
 name: Ensure code quality
 
+inputs:
+  working-directory: 
+    required: true
+  
 runs:
   using: "composite"
+  default:
+    working-directory: packages/fox_logging
   steps:
     - uses: actions/checkout@v3
 
