@@ -20,14 +20,11 @@ jobs:
   
   code-quality:
     name: fox_logging code quality
-    defaults:
-      run:
-        working-directory: packages/fox_logging
-        
     runs-on: ubuntu-latest
-    
     steps:
-      - uses: "../../.github/workflows/templates/ensure_code_quality"
+      - uses: "./.github/workflows/templates/ensure_code_quality"
+        with:
+          working-directory: packages/fox_logging
       
         
   test:
