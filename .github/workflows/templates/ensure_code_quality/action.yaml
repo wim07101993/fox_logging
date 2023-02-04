@@ -7,15 +7,19 @@ runs:
       uses: dart-lang/setup-dart@v1.4
 
     - name: Install dependencies
+      shell: bash
       run: |
         dart pub get
         dart pub global activate pana
 
     - name: Verify formatting
+      shell: bash
       run: dart format --set-exit-if-changed .
 
     - name: Analyze source code
+      shell: bash
       run: dart analyze --fatal-infos --fatal-warnings
 
     - name: Verify Pub Score
+      shell: bash
       run: tool/ensure_pana_score.sh
