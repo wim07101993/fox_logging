@@ -31,7 +31,10 @@ jobs:
       - name: Update versino in pubspec
         run: 'sed -i -E "s/^version: .*/version: ${{ steps.gitversion.outputs.fullSemVer }}/g" pubspec.yaml'
         
-      - run: cat pubspec.yaml
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: fox-logging-v${{ steps.gitversion.outputs.fullSemVer }}
+          message: "Release v${{ steps.gitversion.outputs.fullSemVer }}"
       
 #       - uses: dart-lang/setup-dart@v1
       
