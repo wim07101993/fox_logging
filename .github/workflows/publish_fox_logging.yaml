@@ -25,11 +25,11 @@ jobs:
           versionSpec: '5.x'
 
       - name: Determine Version
-        id: getVersion
+        id: gitversion
         uses: gittools/actions/gitversion/execute@v0.9.7
         
       - name: Update versino in pubspec
-        run: 'sed -i -E "s/^version: .*/version: ${{ getVersion.outputs.fullSemVer }}/g" pubspec.yaml'
+        run: 'sed -i -E "s/^version: .*/version: ${{ steps.gitversion.outputs.fullSemVer }}/g" pubspec.yaml'
         
       - run: cat pubspec.yaml
       
