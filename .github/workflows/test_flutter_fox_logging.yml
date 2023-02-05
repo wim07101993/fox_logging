@@ -1,4 +1,4 @@
-name: flutter fox logging
+name: Test flutter fox logging
 
 on:
   push:
@@ -27,21 +27,14 @@ jobs:
         with:
           working-directory: packages/flutter_fox_logging
           flutter-or-dart: flutter
-          
-  build:
-    defaults:
-      run:
-        working-directory: packages/flutter_fox_logging
         
+  test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2.8.0
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Run Tests
-        run: |
-          flutter pub global activate coverage
-          flutter test --coverage
+      - name: Run tests
+        uses: "./.github/workflows/templates/test_dart_code"
+        with:
+          working-directory: packages/fox_logging
+          flutter-or-dart: flutter
+          require-coverage: false
