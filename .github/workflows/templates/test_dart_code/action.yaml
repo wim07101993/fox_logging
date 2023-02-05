@@ -9,8 +9,8 @@ inputs:
     options:
       - dart
       - flutter
-  require-coverage:
-    default: true
+  min-coverage:
+    default: 90
     
 runs:
   using: "composite"
@@ -42,9 +42,8 @@ runs:
 
     - name: Check Code Coverage
       uses: VeryGoodOpenSource/very_good_coverage@v2.1.0
-      if: inputs.require-coverage == 'true'
       with:
-        min_coverage: 90
+        min_coverage: ${{ input.min-coverage }}
         path: ${{ inputs.working-directory }}/coverage/lcov.info
 
     - name: Upload coverage to Codecov
