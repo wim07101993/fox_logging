@@ -34,13 +34,13 @@ runs:
       if: inputs.flutter-or-dart == 'dart'
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: dart test --coverage=coverage &&
+      run: dart test --coverage=coverage
         
     - name: Run flutter tests
       if: inputs.flutter-or-dart == 'flutter'
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: dart test --coverage &&
+      run: dart test --coverage
 
     - name: Format coverage
       shell: bash
