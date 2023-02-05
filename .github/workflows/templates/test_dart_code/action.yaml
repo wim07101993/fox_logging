@@ -49,4 +49,10 @@ runs:
         path: ${{ inputs.working-directory }}/coverage/lcov.info
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3.1.1      
+      uses: codecov/codecov-action@v3.1.1
+      with:
+        ignore: 
+          - **/.github
+          - **/.idea
+          - **/examples
+          - **/example
