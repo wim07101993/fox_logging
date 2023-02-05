@@ -4,16 +4,29 @@ on:
   push:
     paths:
       - "packages/flutter_fox_logging/**"
-      - ".github/workflows/flutter_fox_logging.yml"
+      - ".github/workflows/test_flutter_fox_logging.yml"
+      - ".github/workflows/templates/ensure_code_quality/**"
+      - ".github/workflows/templates/test_dart_code/**"
     branches: [ master ]
       
   pull_request:
     paths:
       - "packages/flutter_fox_logging/**"
-      - ".github/workflows/flutter_fox_logging.yml"
+      - ".github/workflows/test_flutter_fox_logging.yml"
+      - ".github/workflows/templates/ensure_code_quality/**"
+      - ".github/workflows/templates/test_dart_code/**"
     branches: [ master ]
 
 jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Ensure code quality
+        uses: "./.github/workflows/templates/ensure_code_quality"
+        with:
+          working-directory: packages/flutter_fox_logging
+          
   build:
     defaults:
       run:
