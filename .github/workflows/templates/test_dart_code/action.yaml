@@ -3,27 +3,46 @@ name: Test dart code
 inputs:
   working-directory:
     required: true
+  flutter-or-dart:
+    type: choice
+    default: dart
+    options:
+      - dart
+      - flutter
+  require-coverage:
+    default: true
     
 runs:
   using: "composite"
   steps:
     - name: Install dart
+      if: inputs.flutter-or-dart == 'dart'
       uses: dart-lang/setup-dart@v1.4
+      
+    - name: Install dart
+      if: inputs.flutter-or-dart == 'flutter'
+      uses: subosito/flutter-action@v2.8.0
 
     - name: Install dependencies
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: |
-        dart pub get
-        dart pub global activate coverage
+        ${{ inputs.flutter-or-dart }} pub get
+        ${{ inputs.flutter-or-dart }} pub global activate coverage
         
     - name: Run Tests
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: dart test --coverage=coverage && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
+      run: ${{ inputs.flutter-or-dart }} test --coverage=coverage
+
+    - name: Format coverage
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: ${{ inputs.flutter-or-dart }} pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
 
     - name: Check Code Coverage
       uses: VeryGoodOpenSource/very_good_coverage@v2.1.0
+      if: inputs.require-coverage == 'true'
       with:
         min_coverage: 90
         path: ${{ inputs.working-directory }}/coverage/lcov.info
