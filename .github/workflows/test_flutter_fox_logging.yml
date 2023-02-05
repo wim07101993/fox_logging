@@ -37,4 +37,4 @@ jobs:
         with:
           working-directory: packages/fox_logging
           flutter-or-dart: flutter
-          require-coverage: false
+          min-coverage: 10
