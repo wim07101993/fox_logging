@@ -31,13 +31,13 @@ runs:
         ${{ inputs.flutter-or-dart }} pub global activate coverage
         
     - name: Run dart tests
-      if: input.flutter-or-dart == 'dart'
+      if: inputs.flutter-or-dart == 'dart'
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: dart test --coverage=coverage &&
         
     - name: Run flutter tests
-      if: input.flutter-or-dart == 'flutter'
+      if: inputs.flutter-or-dart == 'flutter'
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: dart test --coverage &&
