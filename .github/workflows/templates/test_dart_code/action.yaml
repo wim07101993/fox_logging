@@ -50,7 +50,7 @@ runs:
     - name: Check code coverage
       uses: VeryGoodOpenSource/very_good_coverage@v2.1.0
       with:
-        min_coverage: ${{ input.min-coverage }}
+        min_coverage: ${{ inputs.min-coverage }}
         path: ${{ inputs.working-directory }}/coverage/lcov.info
 
     - name: Upload coverage to Codecov
