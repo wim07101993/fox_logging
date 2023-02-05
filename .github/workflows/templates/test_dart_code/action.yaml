@@ -34,18 +34,13 @@ runs:
       if: inputs.flutter-or-dart == 'dart'
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: dart test --coverage=coverage
+      run: dart test --coverage=coverage && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
         
     - name: Run flutter tests
       if: inputs.flutter-or-dart == 'flutter'
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: flutter test --coverage
-
-    - name: Format coverage
-      shell: bash
-      working-directory: ${{ inputs.working-directory }}
-      run: ${{ inputs.flutter-or-dart }} pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
 
     - name: Check code coverage
       uses: VeryGoodOpenSource/very_good_coverage@v2.1.0
