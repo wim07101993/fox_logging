@@ -3,7 +3,7 @@ name: Ensure code quality
 inputs:
   working-directory:
     required: true
-  flutterOrDart:
+  flutter-or-dart:
     type: choice
     default: dart
     options:
@@ -14,29 +14,29 @@ runs:
   using: "composite"
   steps:
     - name: Install dart
-      if: ${{ flutterOrDart == dart }}
+      if: ${{ inputs.flutter-or-dart == dart }}
       uses: dart-lang/setup-dart@v1.4
       
     - name: Install dart
-      if: ${{ flutterOrDart == flutter }}
+      if: ${{ inputs.flutter-or-dart == flutter }}
       uses: subosito/flutter-action@v2.8.0
 
     - name: Install dependencies
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       run: |
-        ${{ flutterOrDart }} pub get
-        ${{ flutterOrDart }} pub global activate pana
+        ${{ inputs.flutter-or-dart }} pub get
+        ${{ inputs.flutter-or-dart }} pub global activate pana
 
     - name: Verify formatting
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: ${{ flutterOrDart }} format --set-exit-if-changed .
+      run: ${{ inputs.flutter-or-dart }} format --set-exit-if-changed .
 
     - name: Analyze source code
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: ${{ flutterOrDart }} analyze --fatal-infos --fatal-warnings
+      run: ${{ inputs.flutter-or-dart }} analyze --fatal-infos --fatal-warnings
 
     - name: Verify Pub Score
       shell: bash
