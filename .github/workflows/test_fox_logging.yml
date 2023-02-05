@@ -3,20 +3,21 @@ name: Test Fox Logging
 on:
   workflow_dispatch:
   push:
+    branches: [ master ]
     paths:
       - "packages/fox_logging/**"
       - ".github/workflows/test_fox_logging.yml"
+      - ".github/workflows/publish_fox_logging.yml"
       - ".github/workflows/templates/ensure_code_quality/**"
       - ".github/workflows/templates/test_dart_code/**"
-    branches: [ master ]
-      
   pull_request:
+    branches: [ master ]
     paths:
       - "packages/fox_logging/**"
       - ".github/workflows/test_fox_logging.yml"
+      - ".github/workflows/publish_fox_logging.yml"
       - ".github/workflows/templates/ensure_code_quality/**"
       - ".github/workflows/templates/test_dart_code/**"
-    branches: [ master ]
 
 jobs:
   code-quality:
