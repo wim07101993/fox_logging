@@ -26,6 +26,7 @@ jobs:
         uses: "./.github/workflows/templates/ensure_code_quality"
         with:
           working-directory: packages/flutter_fox_logging
+          flutter-or-dart: flutter
           
   build:
     defaults:
