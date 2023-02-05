@@ -14,11 +14,11 @@ runs:
   using: "composite"
   steps:
     - name: Install dart
-      if: ${{ inputs.flutter-or-dart == dart }}
+      if: inputs.flutter-or-dart == 'dart'
       uses: dart-lang/setup-dart@v1.4
       
     - name: Install dart
-      if: ${{ inputs.flutter-or-dart == flutter }}
+      if: inputs.flutter-or-dart == 'flutter'
       uses: subosito/flutter-action@v2.8.0
 
     - name: Install dependencies
