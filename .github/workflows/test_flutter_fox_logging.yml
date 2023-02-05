@@ -45,38 +45,3 @@ jobs:
         run: |
           flutter pub global activate coverage
           flutter test --coverage
-                
-      #- name: Check Code Coverage
-      #  uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
-      #  with:
-      #    min_coverage: 90
-      #    path: packages/flutter_fox_logging/coverage/lcov.info
-
-      #- name: Upload coverage to Codecov
-      #  uses: codecov/codecov-action@v2.1.0
-      #  with:
-      #    token: ${{ secrets.CODECOV_TOKEN }}
-
-        
-#   code-quality:
-#     defaults:
-#       run:
-#         working-directory: packages/flutter_fox_logging
-        
-#     runs-on: ubuntu-latest
-    
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: subosito/flutter-action@v2.8.0
-#       - name: Install dependencies
-#         run: |
-#           flutter pub get
-#           flutter pub global activate pana
-#       - name: Verify formatting
-#         run: flutter format --set-exit-if-changed .
-
-#       - name: Analyze source code
-#         run: flutter analyze --fatal-infos --fatal-warnings
-        
-#       - name: Verify Pub Score
-#         run: tool/ensure_pana_score.sh
