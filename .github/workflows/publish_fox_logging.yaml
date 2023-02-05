@@ -16,11 +16,27 @@ jobs:
         working-directory: packages/fox_logging
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       
-      - uses: dart-lang/setup-dart@v1
-      
-      - name: Install dependencies
-        run: dart pub get
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.7
+        with:
+          versionSpec: '5.x'
+
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.7
         
-      - name: Publish
-        run: dart pub publish --force
+      - name: Update versino in pubspec
+        run: 'sed -i -E "s/^version: .*/version: ${{ version }}/g" pubspec.yaml'
+        
+      - run: cat pubspec.yaml
+      
+#       - uses: dart-lang/setup-dart@v1
+      
+#       - name: Install dependencies
+#         run: dart pub get
+        
+#       - name: Publish
+#         run: dart pub publish --force
