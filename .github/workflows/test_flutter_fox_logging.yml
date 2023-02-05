@@ -1,6 +1,8 @@
 name: Test flutter fox logging
 
 on:
+  workflow_dispatch:
+  
   push:
     paths:
       - "packages/flutter_fox_logging/**"
