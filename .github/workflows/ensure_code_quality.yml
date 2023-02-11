@@ -1,0 +1,62 @@
+name: Ensure code quality
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dart
+        uses: dart-lang/setup-dart@v1.4
+
+      - name: Install dependencies
+        run: dart pub global activate pana
+        
+      - name: Pub get
+        run: dart pub get
+        
+      - name: Pub get for example
+        working-directory: example
+        run: dart pub get
+          
+      - name: Verify formatting
+        run: dart format --set-exit-if-changed .
+
+      - name: Analyze source code
+        run: dart analyze --fatal-infos --fatal-warnings
+
+      - name: Verify Pub Score
+        run: bin/ensure_pana_score.sh
+        
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install flutter
+        uses: subosito/flutter-action@v2.8.0
+
+      - name: Install dependencies
+        run: |
+          dart pub get
+          dart pub global activate coverage
+      
+      - name: Run dart tests
+        shell: bash
+        run: dart test --coverage=coverage && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
+
+      - name: Check code coverage
+        uses: VeryGoodOpenSource/very_good_coverage@v2.1.0
+        with:
+          min_coverage: 90
+          path: coverage/lcov.info
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3.1.1
