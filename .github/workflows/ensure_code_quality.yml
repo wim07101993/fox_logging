@@ -21,10 +21,6 @@ jobs:
         
       - name: Pub get
         run: dart pub get
-        
-      - name: Pub get for example
-        working-directory: example
-        run: dart pub get
           
       - name: Verify formatting
         run: dart format --set-exit-if-changed .
