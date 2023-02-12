@@ -16,15 +16,6 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Install dart
-        uses: dart-lang/setup-dart@v1.4
-
-      - name: Install dependencies
-        run: dart pub get
-        
-      - name: Publish - dry run
-        run: dart pub publish --dry-run
-
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.7
         with:
@@ -36,6 +27,15 @@ jobs:
         
       - name: Update versino in pubspec
         run: ./bin/ensure_version.sh
+      
+      - name: Install dart
+        uses: dart-lang/setup-dart@v1.4
+
+      - name: Install dependencies
+        run: dart pub get
         
+      - name: Publish - dry run
+        run: dart pub publish --dry-run
+  
       - name: Publish
         run: dart pub publish --force
