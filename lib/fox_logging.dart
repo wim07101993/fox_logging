@@ -2,6 +2,7 @@ library fox_logging;
 
 export 'package:logging/logging.dart';
 
+export 'src/filter/log_filter.dart';
 export 'src/formatter/json_formatter.dart';
 export 'src/formatter/level_dependent_formatter.dart';
 export 'src/formatter/log_record_formatter.dart';
