@@ -95,8 +95,15 @@ void main() {
         LogRecord(Level.CONFIG, 'App configuration successful', ''),
         LogRecord(Level.INFO, 'App started', ''),
         LogRecord(Level.WARNING, 'What out, type errors ahead', ''),
-        LogRecord(Level.SEVERE, 'Type error', 'Error logger', TypeError(),
-            StackTrace.current, Zone.current, Object()),
+        LogRecord(
+          Level.SEVERE,
+          'Type error',
+          'Error logger',
+          TypeError(),
+          StackTrace.current,
+          Zone.current,
+          Object(),
+        ),
         LogRecord(Level.SHOUT, 'I told you there were type errors ahead', ''),
       ];
 
