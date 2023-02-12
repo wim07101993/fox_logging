@@ -8,34 +8,4 @@ on:
     
 jobs:
   publish:
-    permissions:
-      id-token: write # This is required for authentication using OIDC
-    runs-on: ubuntu-latest    
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9.7
-        with:
-          versionSpec: '5.x'
-
-      - name: Determine Version
-        id: gitversion
-        uses: gittools/actions/gitversion/execute@v0.9.7
-        
-      - name: Ensure correct version
-        run: ./bin/ensure_version.sh
-      
-      - name: Install dart
-        uses: dart-lang/setup-dart@v1.4
-
-      - name: Install dependencies
-        run: dart pub get
-        
-      - name: Publish - dry run
-        run: dart pub publish --dry-run
-  
-      - name: Publish
-        run: dart pub publish --force
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
