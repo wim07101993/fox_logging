@@ -55,6 +55,7 @@ void main() {
         logRecord.stackTrace.toString(),
         fakeLogRecord.stackTrace.toString(),
       );
+      expect(logRecord.zone, isNull);
     });
   });
 
