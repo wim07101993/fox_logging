@@ -3,9 +3,9 @@ name: Ensure code quality
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   code-quality:
@@ -20,10 +20,6 @@ jobs:
         run: dart pub global activate pana
         
       - name: Pub get
-        run: dart pub get
-        
-      - name: Pub get for example
-        working-directory: example
         run: dart pub get
           
       - name: Verify formatting
