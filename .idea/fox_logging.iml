@@ -18,6 +18,9 @@
       <excludeFolder url="file://$MODULE_DIR$/examples/logs_viewer/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/examples/logs_viewer/build" />
       <excludeFolder url="file://$MODULE_DIR$/examples/logs_viewer/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
