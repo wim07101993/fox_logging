@@ -67,6 +67,18 @@ void main() {
       verify(() => mockToPen.convert(fakeLogRecord.level));
       verify(() => mockToPrefix.convert(fakeLogRecord.level));
     });
+
+    test('should write date and time', () {
+      // arrange
+      formatter = SimpleFormatter();
+      fakeLogRecord = faker.logRecord();
+
+      // act
+      final formatted = formatter.format(fakeLogRecord);
+
+      // assert
+      expect(formatted, contains(fakeLogRecord.time.toIso8601String()));
+    });
   });
 
   group('IN <-> OUT tests', () {
