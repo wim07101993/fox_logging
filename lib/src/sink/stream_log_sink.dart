@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:fox_logging/src/sink/log_sink.dart';
 import 'package:logging/logging.dart';
 
-class StreamLogSink with LogSinkMixin {
-  StreamLogSink() : _controller = StreamController();
-  StreamLogSink.broadcast() : _controller = StreamController.broadcast();
+class StreamLogSink extends LogSink {
+  StreamLogSink([super.logFilter]) : _controller = StreamController();
+  StreamLogSink.broadcast([super.logFilter])
+      : _controller = StreamController.broadcast();
 
   final StreamController<LogRecord> _controller;
 

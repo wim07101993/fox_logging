@@ -9,6 +9,7 @@ import '../../mocks.dart';
 
 void main() {
   late _MockLogWriter mockWriter;
+  late _MockLogFilter mockFilter;
 
   late LogSinkMixin logSink;
 
@@ -18,8 +19,11 @@ void main() {
 
   setUp(() {
     mockWriter = _MockLogWriter();
+    mockFilter = _MockLogFilter();
 
-    logSink = _LogSink(mockWriter);
+    when(() => mockFilter.shouldLog(any())).thenReturn(true);
+
+    logSink = _LogSink(mockWriter, mockFilter);
   });
 
   group('listenTo', () {
@@ -27,6 +31,10 @@ void main() {
 
     setUp(() {
       streamController = StreamController();
+    });
+
+    tearDown(() {
+      logSink.dispose();
     });
 
     test('should add listener which writes when a new log-record is emitted',
@@ -41,6 +49,20 @@ void main() {
         await Future.delayed(const Duration(milliseconds: 1));
         verify(() => mockWriter.write(record));
       }
+    });
+
+    test('should not write logs when the filter blocks them', () async {
+      // arrange
+      when(() => mockFilter.shouldLog(any())).thenReturn(false);
+      logSink.listenTo(streamController.stream);
+      final record = faker.logRecord();
+
+      // act
+      streamController.add(record);
+
+      // assert
+      await Future.delayed(const Duration(milliseconds: 1));
+      verifyNoMoreInteractions(mockWriter);
     });
   });
 
@@ -61,6 +83,10 @@ void main() {
       mockStream1 = MockStream();
       mockStream2 = MockStream();
       mockStream3 = MockStream();
+
+      when(() => mockStream1.where(any())).thenAnswer((_) => mockStream1);
+      when(() => mockStream2.where(any())).thenAnswer((_) => mockStream2);
+      when(() => mockStream3.where(any())).thenAnswer((_) => mockStream3);
 
       when(() => mockStream1.listen(any())).thenReturn(mockSubscription1);
       when(() => mockStream2.listen(any())).thenReturn(mockSubscription2);
@@ -84,9 +110,11 @@ void main() {
 }
 
 class _LogSink with LogSinkMixin {
-  _LogSink(this.writer);
+  _LogSink(this.writer, this.filter);
 
   final _MockLogWriter writer;
+  @override
+  final _MockLogFilter filter;
 
   @override
   Future<void> write(LogRecord logRecord) => writer.write(logRecord);
@@ -101,3 +129,5 @@ class _MockLogWriter extends Mock implements _LogWriter {
     when(() => write(any())).thenAnswer((i) => Future.value());
   }
 }
+
+class _MockLogFilter extends Mock implements LogFilter {}

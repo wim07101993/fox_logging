@@ -11,8 +11,11 @@ import 'package:logging/logging.dart';
 /// A [LogSinkMixin] which uses the [print] function to write logs to.
 ///
 /// [formatter] is used to format [LogRecord] before printing it.
-class PrintSink with LogSinkMixin {
-  PrintSink(this.formatter);
+class PrintSink extends LogSink {
+  PrintSink(
+    this.formatter, [
+    super.logFilter,
+  ]);
 
   static const lineSplitter = LineSplitter();
 
@@ -31,7 +34,9 @@ class PrintSink with LogSinkMixin {
 }
 
 /// A [LogSinkMixin] which uses the [log] function to write logs to.
-class DevLogSink with LogSinkMixin {
+class DevLogSink extends LogSink {
+  DevLogSink([super.logFilter]);
+
   @override
   Future<void> write(LogRecord logRecord) {
     log(

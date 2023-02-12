@@ -7,9 +7,9 @@ import 'package:logging/logging.dart';
 export 'package:faker/faker.dart';
 
 extension FakerExtensions on Faker {
-  LogRecord logRecord() {
+  LogRecord logRecord({Level? level}) {
     return LogRecord(
-      logLevel(),
+      level ?? logLevel(),
       faker.lorem.sentence(),
       faker.lorem.word(),
       faker.nullOr(() => faker.lorem.sentence()),
