@@ -25,7 +25,7 @@ jobs:
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0.9.7
         
-      - name: Update versino in pubspec
+      - name: Ensure correct version
         run: ./bin/ensure_version.sh
       
       - name: Install dart
