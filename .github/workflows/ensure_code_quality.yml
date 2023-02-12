@@ -48,11 +48,11 @@ jobs:
         shell: bash
         run: dart test --coverage=coverage && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3.1.1
+
       - name: Check code coverage
         uses: VeryGoodOpenSource/very_good_coverage@v2.1.0
         with:
           min_coverage: 90
           path: coverage/lcov.info
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3.1.1
