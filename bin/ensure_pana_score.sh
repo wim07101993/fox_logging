@@ -10,7 +10,7 @@
 # `./ensure_pana_score.sh`
 
 PANA=$(pana . --no-warning)
-echo "PANA"
+echo "$PANA"
 PANA_SCORE=$(echo "$PANA" | sed -n "s/.*Points: \([0-9]*\)\/\([0-9]*\)./\1\/\2/p")
 echo "score: $PANA_SCORE"
 IFS='/'

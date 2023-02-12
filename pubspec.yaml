@@ -3,7 +3,7 @@ description: Utilities for the logging package like Formatter, Sinks,... It
   provides a flow to make logging more structured by introducing sinks and 
   formatters.
 homepage: https://github.com/wim07101993/fox_logging
-repository: https://github.com/wim07101993/fox_logging/tree/master/packages/fox_logging
+repository: https://github.com/wim07101993/fox_logging
 version: 0.4.0
 
 environment:
