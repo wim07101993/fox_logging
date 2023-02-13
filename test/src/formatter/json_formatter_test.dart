@@ -143,5 +143,66 @@ void main() {
         }),
       );
     });
+
+    test('should format object to string', () {
+      // arrange
+      final logRecord = LogRecord(
+        faker.logLevel(),
+        faker.lorem.sentence(),
+        faker.lorem.word(),
+        null,
+        null,
+        null,
+        TypeError(),
+      );
+
+      // act
+      final json = jsonFormatter.format(logRecord);
+
+      // assert
+      expect(
+        json,
+        jsonEncode({
+          'level': {
+            'value': logRecord.level.value,
+            'name': logRecord.level.name,
+          },
+          'message': logRecord.message,
+          'object': logRecord.object!.toString(),
+          'loggerName': logRecord.loggerName,
+          'time': logRecord.time.toIso8601String(),
+          'sequenceNumber': logRecord.sequenceNumber,
+        }),
+      );
+    });
+
+    test('should format error to string', () {
+      // arrange
+      final logRecord = LogRecord(
+        faker.logLevel(),
+        faker.lorem.sentence(),
+        faker.lorem.word(),
+        TypeError(),
+      );
+
+      // act
+      final json = jsonFormatter.format(logRecord);
+
+      // assert
+      expect(
+        json,
+        jsonEncode({
+          'level': {
+            'value': logRecord.level.value,
+            'name': logRecord.level.name,
+          },
+          'message': logRecord.message,
+          'loggerName': logRecord.loggerName,
+          'time': logRecord.time.toIso8601String(),
+          'sequenceNumber': logRecord.sequenceNumber,
+          'error': logRecord.error!.toString(),
+        }),
+      );
+    });
   });
 }
