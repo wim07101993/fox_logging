@@ -7,15 +7,30 @@ import 'package:logging/logging.dart';
 export 'package:faker/faker.dart';
 
 extension FakerExtensions on Faker {
-  LogRecord logRecord({Level? level}) {
+  LogRecord logRecord({
+    Level? level,
+    bool? generateStackTrace,
+    bool? generateError,
+    bool? generateZone,
+    bool? generateObject,
+  }) {
     return LogRecord(
       level ?? logLevel(),
       faker.lorem.sentence(),
       faker.lorem.word(),
-      faker.nullOr(() => faker.lorem.sentence()),
-      faker.nullOr(() => StackTrace.current),
-      faker.nullOr(() => Zone.current),
-      faker.nullOr(() => faker.lorem.sentence()),
+      faker.maybeGenerate(
+        () => faker.lorem.sentence(),
+        shouldGenerate: generateError,
+      ),
+      faker.maybeGenerate(
+        () => StackTrace.current,
+        shouldGenerate: generateStackTrace,
+      ),
+      faker.maybeGenerate(() => Zone.current, shouldGenerate: generateZone),
+      faker.maybeGenerate(
+        () => faker.lorem.sentence(),
+        shouldGenerate: generateObject,
+      ),
     );
   }
 
@@ -33,5 +48,12 @@ extension FakerExtensions on Faker {
 
   T? nullOr<T>(T Function() value) {
     return randomGenerator.boolean() ? value() : null;
+  }
+
+  T? maybeGenerate<T>(
+    T Function() value, {
+    bool? shouldGenerate,
+  }) {
+    return shouldGenerate ?? randomGenerator.boolean() ? value() : null;
   }
 }
