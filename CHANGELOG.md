@@ -1,3 +1,8 @@
+## 0.5.2
+
+- fix: json formatter threw on object and error
+- ci stuff
+
 ## 0.5.0
 
 - feat: added filters
