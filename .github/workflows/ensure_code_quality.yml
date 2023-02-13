@@ -31,6 +31,9 @@ jobs:
       - name: Verify Pub Score
         run: bin/ensure_pana_score.sh
         
+      - name: Verify ready for publish
+        run: dart pub publish --dry-run
+        
   test:
     runs-on: ubuntu-latest
     steps:
