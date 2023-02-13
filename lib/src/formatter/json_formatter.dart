@@ -23,8 +23,8 @@ class JsonFormatter extends LogRecordFormatter {
   }
 
   Map<String, dynamic> _logRecordToJsonMap(LogRecord logRecord) {
-    final strObject = logRecord.object;
-    final strError = logRecord.error;
+    final object = logRecord.object;
+    final error = logRecord.error;
 
     final stackTrace = logRecord.stackTrace;
 
@@ -34,11 +34,11 @@ class JsonFormatter extends LogRecordFormatter {
         'name': logRecord.level.name,
       },
       'message': logRecord.message,
-      if (strObject != null) 'object': strObject,
+      if (object != null) 'object': object.toString(),
       'loggerName': logRecord.loggerName,
       'time': logRecord.time.toIso8601String(),
       'sequenceNumber': logRecord.sequenceNumber,
-      if (strError != null) 'error': strError,
+      if (error != null) 'error': error.toString(),
       if (stackTrace != null) 'stackTrace': stackTrace.toString(),
     };
   }
