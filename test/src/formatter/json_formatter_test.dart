@@ -205,4 +205,71 @@ void main() {
       );
     });
   });
+
+  group('formatList', () {
+    test('should convert the list to a json array', () {
+      // arrange
+      final logRecord1 = faker.logRecord(
+        generateError: false,
+        generateObject: false,
+        generateStackTrace: false,
+      );
+      final logRecord2 = faker.logRecord(
+        generateError: false,
+        generateObject: false,
+        generateStackTrace: false,
+      );
+      final logRecord3 = faker.logRecord(
+        generateError: false,
+        generateObject: false,
+        generateStackTrace: false,
+      );
+
+      // act
+      final json = jsonFormatter.formatList([
+        logRecord1,
+        logRecord2,
+        logRecord3,
+      ]);
+
+      // assert
+      expect(
+        json,
+        jsonEncode(
+          [
+            {
+              'level': {
+                'value': logRecord1.level.value,
+                'name': logRecord1.level.name,
+              },
+              'message': logRecord1.message,
+              'loggerName': logRecord1.loggerName,
+              'time': logRecord1.time.toIso8601String(),
+              'sequenceNumber': logRecord1.sequenceNumber,
+            },
+            {
+              'level': {
+                'value': logRecord2.level.value,
+                'name': logRecord2.level.name,
+              },
+              'message': logRecord2.message,
+              'loggerName': logRecord2.loggerName,
+              'time': logRecord2.time.toIso8601String(),
+              'sequenceNumber': logRecord2.sequenceNumber,
+            },
+            {
+              'level': {
+                'value': logRecord3.level.value,
+                'name': logRecord3.level.name,
+              },
+              'message': logRecord3.message,
+              'loggerName': logRecord3.loggerName,
+              'time': logRecord3.time.toIso8601String(),
+              'sequenceNumber': logRecord3.sequenceNumber,
+            },
+          ],
+        ),
+      );
+    });
+  });
 }

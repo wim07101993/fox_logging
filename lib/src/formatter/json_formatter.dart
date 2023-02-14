@@ -22,6 +22,11 @@ class JsonFormatter extends LogRecordFormatter {
     return jsonEncode(_logRecordToJsonMap(logRecord));
   }
 
+  @override
+  String formatList(List<LogRecord> list) {
+    return jsonEncode(list.map(_logRecordToJsonMap).toList(growable: false));
+  }
+
   Map<String, dynamic> _logRecordToJsonMap(LogRecord logRecord) {
     final object = logRecord.object;
     final error = logRecord.error;
