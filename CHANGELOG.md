@@ -1,3 +1,7 @@
+## 0.5.3
+
+- feat: added formatList functions
+
 ## 0.5.2
 
 - fix: json formatter threw on object and error
