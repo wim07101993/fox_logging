@@ -4,6 +4,7 @@ import 'package:fox_logging/fox_logging.dart';
 import 'package:test/test.dart';
 
 import '../../faker_extensions.dart';
+import '../../log_record_matcher.dart';
 
 void main() {
   late JsonLogRecordParser parser;
@@ -200,6 +201,26 @@ void main() {
         logRecord.stackTrace.toString(),
         fakeLogRecord.stackTrace.toString(),
       );
+    });
+
+    test('should parse output from [JsonFormatter]', () {
+      // arrange
+      final logRecord1 = faker.logRecord();
+      final logRecord2 = faker.logRecord();
+      final logRecord3 = faker.logRecord();
+      final json = const JsonFormatter().formatList([
+        logRecord1,
+        logRecord2,
+        logRecord3,
+      ]);
+
+      // act
+      final logRecords = parser.parseList(json);
+
+      // assert
+      expect(logRecords, contains(equalsLogRecord(logRecord1)));
+      expect(logRecords, contains(equalsLogRecord(logRecord2)));
+      expect(logRecords, contains(equalsLogRecord(logRecord3)));
     });
   });
 }
