@@ -29,7 +29,7 @@ void main() {
     TypeError(),
     StackTrace.current,
   );
-  simpleLogger.shout('I told you to look out for null-pointers');
+  simpleLogger.shout('I told you to look out for type-errors');
 
   simplePrint.dispose();
 
@@ -48,7 +48,7 @@ void main() {
     TypeError(),
     StackTrace.current,
   );
-  prettyLogger.shout('I told you to look out for null-pointers');
+  prettyLogger.shout('I told you to look out for type-errors');
 
   prettySink.dispose();
 }
