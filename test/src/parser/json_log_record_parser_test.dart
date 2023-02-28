@@ -102,6 +102,83 @@ void main() {
         fakeLogRecord.stackTrace.toString(),
       );
     });
+
+    test('stack-trace should be null when it is null in the map', () {
+      // arrange
+      final fakeLogRecord = LogRecord(
+        faker.logLevel(),
+        faker.lorem.sentence(),
+        faker.lorem.word(),
+        faker.lorem.sentence(),
+        null,
+        null,
+        faker.lorem.sentence(),
+      );
+      final fakeMap = <String, dynamic>{
+        "level": <String, dynamic>{
+          "name": fakeLogRecord.level.name,
+          "value": fakeLogRecord.level.value
+        },
+        "message": fakeLogRecord.message,
+        "object": fakeLogRecord.object,
+        "loggerName": fakeLogRecord.loggerName,
+        "time": fakeLogRecord.time.toIso8601String(),
+        "sequenceNumber": fakeLogRecord.sequenceNumber,
+        "error": fakeLogRecord.error,
+        "stackTrace": faker.randomGenerator.integer(100),
+      };
+
+      // act
+      final logRecord = parser.parseMap(fakeMap);
+
+      // assert
+      expect(logRecord.level, fakeLogRecord.level);
+      expect(logRecord.message, fakeLogRecord.message);
+      expect(logRecord.object, fakeLogRecord.object);
+      expect(logRecord.loggerName, fakeLogRecord.loggerName);
+      expect(logRecord.time, fakeLogRecord.time);
+      expect(logRecord.sequenceNumber, fakeLogRecord.sequenceNumber);
+      expect(logRecord.error, fakeLogRecord.error);
+      expect(logRecord.stackTrace, isNull);
+    });
+
+    test('stack-trace should be null when it is not a string in the map', () {
+      // arrange
+      final fakeLogRecord = LogRecord(
+        faker.logLevel(),
+        faker.lorem.sentence(),
+        faker.lorem.word(),
+        faker.lorem.sentence(),
+        null,
+        null,
+        faker.lorem.sentence(),
+      );
+      final fakeMap = <String, dynamic>{
+        "level": <String, dynamic>{
+          "name": fakeLogRecord.level.name,
+          "value": fakeLogRecord.level.value
+        },
+        "message": fakeLogRecord.message,
+        "object": fakeLogRecord.object,
+        "loggerName": fakeLogRecord.loggerName,
+        "time": fakeLogRecord.time.toIso8601String(),
+        "sequenceNumber": fakeLogRecord.sequenceNumber,
+        "error": fakeLogRecord.error,
+      };
+
+      // act
+      final logRecord = parser.parseMap(fakeMap);
+
+      // assert
+      expect(logRecord.level, fakeLogRecord.level);
+      expect(logRecord.message, fakeLogRecord.message);
+      expect(logRecord.object, fakeLogRecord.object);
+      expect(logRecord.loggerName, fakeLogRecord.loggerName);
+      expect(logRecord.time, fakeLogRecord.time);
+      expect(logRecord.sequenceNumber, fakeLogRecord.sequenceNumber);
+      expect(logRecord.error, fakeLogRecord.error);
+      expect(logRecord.stackTrace, isNull);
+    });
   });
 
   group('parseLevel', () {

@@ -79,8 +79,8 @@ void main() {
         converter.shout?.down,
         (AnsiPen()..magenta(bg: true, bold: true)).down,
       );
-      expect(converter.defaultValue.up, '');
-      expect(converter.defaultValue.down, '');
+      expect(converter.defaultValue.up, AnsiPen().up);
+      expect(converter.defaultValue.down, AnsiPen().down);
     });
   });
 }

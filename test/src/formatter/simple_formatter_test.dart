@@ -9,6 +9,8 @@ import 'package:test/test.dart';
 import '../../faker_extensions.dart';
 import '../../mocks.dart';
 
+part 'simple_formatter_test.types.dart';
+
 void main() {
   late bool fakePrintTime;
   late Converter<Level, AnsiPen> mockToPen;
@@ -92,13 +94,21 @@ void main() {
       Level.SEVERE,
       Level.SHOUT,
     ];
-    late LogLevelToAnsiPenConverter toPen;
+
+    late AnsiPen mockPen;
+
     late List<LogRecord> inputs;
     late List<String> expected;
 
     setUp(() {
-      toPen = LogLevelToAnsiPenConverter();
-      formatter = SimpleFormatter(printTime: false, levelToPen: toPen);
+      mockToPen = MockConverter();
+      mockPen = _MockAnsiPen();
+
+      when(() => mockToPen.convert(any())).thenReturn(mockPen);
+      when(() => mockPen.call(any()))
+          .thenAnswer((i) => i.positionalArguments[0] as String);
+
+      formatter = SimpleFormatter(printTime: false, levelToPen: mockToPen);
 
       inputs = [
         LogRecord(Level.FINEST, 'This is a verbose message', 'Test'),
@@ -120,14 +130,18 @@ void main() {
       ];
 
       expected = [
-        '[V] Test: This is a verbose message',
-        '[D] Test: This is a debug message',
-        '[F] Test: This is a fine message',
-        '[C] App configuration successful',
-        '[I] App started',
-        '[W] What out, type errors ahead',
-        '[E] Error logger: Type error ERROR: ${TypeError()}',
-        '[WTF] I told you there were type errors ahead',
+        mockToPen.convert(Level.FINEST)('[V] Test: This is a verbose message'),
+        mockToPen.convert(Level.FINER)('[D] Test: This is a debug message'),
+        mockToPen.convert(Level.FINE)('[F] Test: This is a fine message'),
+        '${mockToPen.convert(Level.CONFIG)('[C]')} App configuration successful',
+        '${mockToPen.convert(Level.INFO)('[I]')} App started',
+        '${mockToPen.convert(Level.WARNING)('[W]')} What out, type errors ahead',
+        mockToPen.convert(Level.SEVERE)(
+          '[E] Error logger: Type error ERROR: ${TypeError()}',
+        ),
+        mockToPen.convert(Level.SHOUT)(
+          '[WTF] I told you there were type errors ahead',
+        ),
       ];
     });
 
