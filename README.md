@@ -14,7 +14,7 @@ formatters.
 A sink write a log entry to some place, like the console, file, database,...
 
 ```dart
-final printSink = PrintSink(myFormatter);
+final sink = IoLogSink(myFormatter);
 ```
 
 ## Formatter
@@ -30,8 +30,14 @@ final simpleFormatter = SimpleFormatter();
 
 ```dart
 final logger = Logger('Simple');
-final printer = PrintSink(SimpleFormatter())
+final sink = IoLogSink(SimpleFormatter())
   ..listenTo(logger.onRecord);
 ```
+
+Images below show the `SimpleFormatter` and `PrettyFormatter` when using the `PrintSink`.
+`SimpleFormatter`:
+![simple formaater output](https://user-images.githubusercontent.com/23017340/219139634-d3798e6b-564f-483f-b17e-9db88cd1c863.png)
+`PrettyFormatter`:
+![pretty formatter output](https://user-images.githubusercontent.com/23017340/219140524-345a8b26-e1e1-4b72-a48b-0672312cef2a.png)
 
 For a more detailed example check out the [example](https://github.com/wim07101993/fox_logging/tree/master/example).

@@ -44,7 +44,15 @@ extension FakerExtensions on Faker {
     ]);
   }
 
-  Level logLevel() => randomGenerator.element(Level.LEVELS);
+  Level logLevel({
+    String? name,
+    int? value,
+  }) {
+    return Level(
+      name ?? faker.lorem.word(),
+      value ?? faker.randomGenerator.integer(2000),
+    );
+  }
 
   T? nullOr<T>(T Function() value) {
     return randomGenerator.boolean() ? value() : null;

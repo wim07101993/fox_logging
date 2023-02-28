@@ -106,10 +106,14 @@ void main() {
           null,
           faker.lorem.sentence(),
         );
+        final pen = mockLevelToPen.convert(fakeRecord.level);
         final formatted = formatter.format(fakeRecord);
 
         // assert
-        expect(formatted, '''
+        expect(
+          formatted,
+          pen(
+            '''
 ┌───────────────────────────────────────────────────────────────────────────────
 │ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
 │ Payload: ${fakeRecord.object}
@@ -118,7 +122,9 @@ void main() {
 │ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 │ ${fakeRecord.stackTrace}
-└───────────────────────────────────────────────────────────────────────────────''');
+└───────────────────────────────────────────────────────────────────────────────''',
+          ),
+        );
       });
 
       test('should format with thick lines', () {
@@ -132,10 +138,14 @@ void main() {
           null,
           faker.lorem.sentence(),
         );
+        final pen = mockLevelToPen.convert(fakeRecord.level);
         final formatted = formatter.format(fakeRecord);
 
         // assert
-        expect(formatted, '''
+        expect(
+          formatted,
+          pen(
+            '''
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
 ┃ Payload: ${fakeRecord.object}
@@ -144,7 +154,9 @@ void main() {
 ┃ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
 ┠───────────────────────────────────────────────────────────────────────────────
 ┃ ${fakeRecord.stackTrace}
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''');
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''',
+          ),
+        );
       });
     });
 
@@ -175,10 +187,14 @@ void main() {
           null,
           faker.lorem.sentence(),
         );
+        final pen = mockLevelToPen.convert(fakeRecord.level);
         final formatted = formatter.format(fakeRecord);
 
         // assert
-        expect(formatted, '''
+        expect(
+          formatted,
+          pen(
+            '''
 ┌───────────────────────────────────────────────────────────────────────────────
 │ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
 │ Payload: ${fakeRecord.object}
@@ -187,7 +203,9 @@ void main() {
 │ Logger: ${fakeRecord.loggerName}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 │ ${fakeRecord.stackTrace}
-└───────────────────────────────────────────────────────────────────────────────''');
+└───────────────────────────────────────────────────────────────────────────────''',
+          ),
+        );
       });
 
       test('should format with thick lines', () {
@@ -201,10 +219,14 @@ void main() {
           null,
           faker.lorem.sentence(),
         );
+        final pen = mockLevelToPen.convert(fakeRecord.level);
         final formatted = formatter.format(fakeRecord);
 
         // assert
-        expect(formatted, '''
+        expect(
+          formatted,
+          pen(
+            '''
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
 ┃ Payload: ${fakeRecord.object}
@@ -213,7 +235,9 @@ void main() {
 ┃ Logger: ${fakeRecord.loggerName}
 ┠───────────────────────────────────────────────────────────────────────────────
 ┃ ${fakeRecord.stackTrace}
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''');
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''',
+          ),
+        );
       });
     });
 
@@ -236,16 +260,22 @@ void main() {
           null,
           faker.lorem.sentence(),
         );
+        final pen = mockLevelToPen.convert(fakeRecord.level);
         final formatted = formatter.format(fakeRecord);
 
         // assert
-        expect(formatted, '''
+        expect(
+          formatted,
+          pen(
+            '''
 ┌───────────────────────────────────────────────────────────────────────────────
 │ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
 │ Payload: ${fakeRecord.object}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 │ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
-└───────────────────────────────────────────────────────────────────────────────''');
+└───────────────────────────────────────────────────────────────────────────────''',
+          ),
+        );
       });
 
       test('should format with thick lines', () {
@@ -259,16 +289,22 @@ void main() {
           null,
           faker.lorem.sentence(),
         );
+        final pen = mockLevelToPen.convert(fakeRecord.level);
         final formatted = formatter.format(fakeRecord);
 
         // assert
-        expect(formatted, '''
+        expect(
+          formatted,
+          pen(
+            '''
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
 ┃ Payload: ${fakeRecord.object}
 ┠───────────────────────────────────────────────────────────────────────────────
 ┃ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''');
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''',
+          ),
+        );
       });
     });
 
@@ -291,10 +327,14 @@ void main() {
           null,
           faker.lorem.sentence(),
         );
+        final pen = mockLevelToPen.convert(fakeRecord.level);
         final formatted = formatter.format(fakeRecord);
 
         // assert
-        expect(formatted, '''
+        expect(
+          formatted,
+          pen(
+            '''
 ┌───────────────────────────────────────────────────────────────────────────────
 │ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
 │ Payload: ${fakeRecord.object}
@@ -303,7 +343,9 @@ void main() {
 │ Time: ${fakeRecord.time.toIso8601String()}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 │ ${fakeRecord.stackTrace}
-└───────────────────────────────────────────────────────────────────────────────''');
+└───────────────────────────────────────────────────────────────────────────────''',
+          ),
+        );
       });
 
       test('should format with thick lines', () {
@@ -317,10 +359,14 @@ void main() {
           null,
           faker.lorem.sentence(),
         );
+        final pen = mockLevelToPen.convert(fakeRecord.level);
         final formatted = formatter.format(fakeRecord);
 
         // assert
-        expect(formatted, '''
+        expect(
+          formatted,
+          pen(
+            '''
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
 ┃ Payload: ${fakeRecord.object}
@@ -329,7 +375,9 @@ void main() {
 ┃ Time: ${fakeRecord.time.toIso8601String()}
 ┠───────────────────────────────────────────────────────────────────────────────
 ┃ ${fakeRecord.stackTrace}
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''');
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''',
+          ),
+        );
       });
     });
 
@@ -350,10 +398,14 @@ void main() {
           faker.lorem.sentence(),
           StackTrace.fromString(faker.lorem.sentence()),
         );
+        final pen = mockLevelToPen.convert(fakeRecord.level);
         final formatted = formatter.format(fakeRecord);
 
         // assert
-        expect(formatted, '''
+        expect(
+          formatted,
+          pen(
+            '''
 ┌───────────────────────────────────────────────────────────────────────────────
 │ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
 │ Error: ${fakeRecord.error}
@@ -361,7 +413,9 @@ void main() {
 │ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
 ├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
 │ ${fakeRecord.stackTrace}
-└───────────────────────────────────────────────────────────────────────────────''');
+└───────────────────────────────────────────────────────────────────────────────''',
+          ),
+        );
       });
 
       test('should format with thick lines', () {
@@ -373,10 +427,14 @@ void main() {
           faker.lorem.sentence(),
           StackTrace.fromString(faker.lorem.sentence()),
         );
+        final pen = mockLevelToPen.convert(fakeRecord.level);
         final formatted = formatter.format(fakeRecord);
 
         // assert
-        expect(formatted, '''
+        expect(
+          formatted,
+          pen(
+            '''
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ ${mockLevelToSymbol.convert(fakeRecord.level)}  ${fakeRecord.message}
 ┃ Error: ${fakeRecord.error}
@@ -384,7 +442,9 @@ void main() {
 ┃ Time: ${fakeRecord.time.toIso8601String()} │ Logger: ${fakeRecord.loggerName}
 ┠───────────────────────────────────────────────────────────────────────────────
 ┃ ${fakeRecord.stackTrace}
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''');
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━''',
+          ),
+        );
       });
     });
   });

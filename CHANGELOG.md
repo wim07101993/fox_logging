@@ -1,3 +1,10 @@
+## 0.6.0
+
+- feat: added `IoLogSink`
+- deprecated `PrintSink`
+- fix: json log record parser would add stackTrace even when none is present
+- fix: a bunch of tests
+
 ## 0.5.3
 
 - feat: added formatList functions

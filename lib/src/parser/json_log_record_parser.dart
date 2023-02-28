@@ -34,9 +34,7 @@ class JsonLogRecordParser extends LogRecordParser {
       DateTime.parse(map['time'] as String),
       map['sequenceNumber'] as int,
       map['error'],
-      stackTraceStr is! String || stackTraceStr == ''
-          ? StackTrace.empty
-          : StackTrace.fromString(stackTraceStr),
+      stackTraceStr is! String ? null : StackTrace.fromString(stackTraceStr),
     );
   }
 
