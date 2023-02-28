@@ -1,3 +1,8 @@
+## 0.6.0
+
+- feat: added `IoLogSink`
+- deprecated `PrintSink`
+
 ## 0.5.3
 
 - feat: added formatList functions
