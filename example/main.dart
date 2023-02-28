@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:fox_logging/fox_logging.dart';
+import 'package:fox_logging/src/sink/io_log_sink.dart';
 
 void main() {
   log(
@@ -15,7 +16,7 @@ void main() {
   Logger.root.level = Level.ALL;
   hierarchicalLoggingEnabled = true;
   final simpleLogger = Logger('Simple');
-  final simplePrint = PrintSink(SimpleFormatter())
+  final simpleSink = IoLogSink(SimpleFormatter())
     ..listenTo(simpleLogger.onRecord);
 
   simpleLogger.finest('This is a verbose message');
@@ -31,10 +32,10 @@ void main() {
   );
   simpleLogger.shout('I told you to look out for type-errors');
 
-  simplePrint.dispose();
+  simpleSink.dispose();
 
   final prettyLogger = Logger('Pretty');
-  final prettySink = PrintSink(PrettyFormatter())
+  final prettySink = IoLogSink(PrettyFormatter())
     ..listenTo(prettyLogger.onRecord);
 
   prettyLogger.finest('This is a verbose message');

@@ -14,7 +14,7 @@ formatters.
 A sink write a log entry to some place, like the console, file, database,...
 
 ```dart
-final printSink = PrintSink(myFormatter);
+final sink = IoLogSink(myFormatter);
 ```
 
 ## Formatter
@@ -30,7 +30,7 @@ final simpleFormatter = SimpleFormatter();
 
 ```dart
 final logger = Logger('Simple');
-final printer = PrintSink(SimpleFormatter())
+final sink = IoLogSink(SimpleFormatter())
   ..listenTo(logger.onRecord);
 ```
 
