@@ -1,5 +1,4 @@
 import 'package:fox_logging/fox_logging.dart';
-import 'package:fox_logging/src/sink/io_log_sink.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 import 'package:test_process/test_process.dart';
