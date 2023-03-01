@@ -1,3 +1,7 @@
+## 0.6.1
+
+- fix: expose `IoLogSink`
+
 ## 0.6.0
 
 - feat: added `IoLogSink`
