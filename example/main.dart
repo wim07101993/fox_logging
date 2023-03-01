@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:fox_logging/fox_logging.dart';
-import 'package:fox_logging/src/sink/io_log_sink.dart';
 
 void main() {
   log(
