@@ -8,9 +8,7 @@ import 'package:logging/logging.dart';
 /// A [LogSinkMixin] which uses the [print] function to write logs to.
 ///
 /// [formatter] is used to format [LogRecord] before printing it.
-@Deprecated('Use IoLogSink instead')
 class PrintSink extends LogSink {
-  @Deprecated('Use IoLogSink instead')
   PrintSink(
     this.formatter, [
     super.logFilter,
