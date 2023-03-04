@@ -9,7 +9,6 @@ void main() {
   late LogRecordFormatter formatter;
   late List<String> lines;
 
-  // ignore: deprecated_member_use_from_same_package
   late PrintSink sink;
 
   setUpAll(() {
@@ -22,7 +21,6 @@ void main() {
 
     when(() => formatter.format(any())).thenReturn(lines.join("\r\n"));
 
-    // ignore: deprecated_member_use_from_same_package
     sink = PrintSink(formatter);
   });
 
