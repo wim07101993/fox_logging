@@ -1,7 +1,10 @@
+## 0.6.2
+
+- un-deprecated `PrintSink`
+ 
 ## 0.6.1
 
 - fix: expose `IoLogSink`
-- un-deprecated `PrintSink`
 
 ## 0.6.0
 
