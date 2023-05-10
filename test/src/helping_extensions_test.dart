@@ -18,6 +18,7 @@ void main() {
       const expected = [1, 2, 3, 4, 5, 10, 2, 50, 42, 42, 42, 43];
 
       // act
+      // ignore: deprecated_member_use_from_same_package
       final result = items.mapMany((person) => person.items);
 
       // assert
