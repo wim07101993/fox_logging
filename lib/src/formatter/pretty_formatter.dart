@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:ansicolor/ansicolor.dart';
 import 'package:fox_logging/src/formatter/log_record_formatter.dart';
-import 'package:fox_logging/src/helping_extensions.dart';
 import 'package:fox_logging/src/level_converter/log_level_to_ansi_pen_converter.dart';
 import 'package:fox_logging/src/level_converter/log_level_to_symbol_converter.dart';
 import 'package:logging/logging.dart';
@@ -134,7 +133,7 @@ class PrettyFormatter extends LogRecordFormatter {
     String vertical,
     String message,
   ) {
-    for (final part in message.split('\r').mapMany((e) => e.split('\n'))) {
+    for (final part in message.split('\r').expand((e) => e.split('\n'))) {
       buffer.writeln('$vertical $part');
     }
   }
