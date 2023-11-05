@@ -75,7 +75,7 @@ void main() {
       final fakeMap = <String, dynamic>{
         "level": <String, dynamic>{
           "name": fakeLogRecord.level.name,
-          "value": fakeLogRecord.level.value
+          "value": fakeLogRecord.level.value,
         },
         "message": fakeLogRecord.message,
         "object": fakeLogRecord.object,
@@ -117,7 +117,7 @@ void main() {
       final fakeMap = <String, dynamic>{
         "level": <String, dynamic>{
           "name": fakeLogRecord.level.name,
-          "value": fakeLogRecord.level.value
+          "value": fakeLogRecord.level.value,
         },
         "message": fakeLogRecord.message,
         "object": fakeLogRecord.object,
@@ -156,7 +156,7 @@ void main() {
       final fakeMap = <String, dynamic>{
         "level": <String, dynamic>{
           "name": fakeLogRecord.level.name,
-          "value": fakeLogRecord.level.value
+          "value": fakeLogRecord.level.value,
         },
         "message": fakeLogRecord.message,
         "object": fakeLogRecord.object,

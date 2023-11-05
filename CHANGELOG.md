@@ -1,7 +1,11 @@
+## 1.0.0
+
+- feat!: upgraded to dart v3
+
 ## 0.6.3
 
 - marked mapMany as deprecated
-- 
+ 
 ## 0.6.2
 
 - un-deprecated `PrintSink`

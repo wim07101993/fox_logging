@@ -61,28 +61,19 @@ class LogLevelConverter<TOut> extends Converter<Level, TOut> {
   /// returned.
   @override
   TOut convert(Level input) {
-    TOut? value;
-    if (input == Level.FINEST) {
-      value = finest;
-    } else if (input == Level.FINER) {
-      value = finer;
-    } else if (input == Level.FINE) {
-      value = fine;
-    } else if (input == Level.INFO) {
-      value = info;
-    } else if (input == Level.CONFIG) {
-      value = config;
-    } else if (input == Level.WARNING) {
-      value = warning;
-    } else if (input == Level.SEVERE) {
-      value = severe;
-    } else if (input == Level.SHOUT) {
-      value = shout;
-    } else if (input == Level.ALL) {
-      value = all;
-    } else if (input == Level.OFF) {
-      value = off;
-    }
-    return value ?? defaultValue;
+    return switch (input) {
+          Level.FINEST => finest,
+          Level.FINER => finer,
+          Level.FINE => fine,
+          Level.INFO => info,
+          Level.CONFIG => config,
+          Level.WARNING => warning,
+          Level.SEVERE => severe,
+          Level.SHOUT => shout,
+          Level.ALL => all,
+          Level.OFF => off,
+          Level() => null,
+        } ??
+        defaultValue;
   }
 }

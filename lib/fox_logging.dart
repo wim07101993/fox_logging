@@ -1,3 +1,5 @@
+/// Extensions on the logging package which allows for multiple log-sinks,
+/// formatters, filters,...
 library fox_logging;
 
 export 'package:logging/logging.dart';
@@ -10,7 +12,6 @@ export 'src/formatter/level_dependent_formatter.dart';
 export 'src/formatter/log_record_formatter.dart';
 export 'src/formatter/pretty_formatter.dart';
 export 'src/formatter/simple_formatter.dart';
-export 'src/helping_extensions.dart';
 export 'src/level_converter/log_level_converter.dart';
 export 'src/level_converter/log_level_to_abbreviation.dart';
 export 'src/level_converter/log_level_to_ansi_pen_converter.dart';
