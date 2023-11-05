@@ -58,28 +58,19 @@ class LevelDependentFormatter extends LogRecordFormatter {
   /// its [LogRecord.level].
   @override
   String format(LogRecord logRecord) {
-    LogRecordFormatter? formatter;
-    if (logRecord.level == Level.FINEST) {
-      formatter = finest;
-    } else if (logRecord.level == Level.FINER) {
-      formatter = finer;
-    } else if (logRecord.level == Level.FINE) {
-      formatter = fine;
-    } else if (logRecord.level == Level.INFO) {
-      formatter = info;
-    } else if (logRecord.level == Level.CONFIG) {
-      formatter = config;
-    } else if (logRecord.level == Level.WARNING) {
-      formatter = warning;
-    } else if (logRecord.level == Level.SEVERE) {
-      formatter = severe;
-    } else if (logRecord.level == Level.SHOUT) {
-      formatter = shout;
-    } else if (logRecord.level == Level.ALL) {
-      formatter = all;
-    } else if (logRecord.level == Level.OFF) {
-      formatter = off;
-    }
+    final formatter = switch (logRecord.level) {
+      Level.FINEST => finest,
+      Level.FINER => finer,
+      Level.FINE => fine,
+      Level.INFO => info,
+      Level.CONFIG => config,
+      Level.WARNING => warning,
+      Level.SEVERE => severe,
+      Level.SHOUT => shout,
+      Level.ALL => all,
+      Level.OFF => off,
+      Level() => null,
+    };
     return (formatter ?? defaultFormatter).format(logRecord);
   }
 }
