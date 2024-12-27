@@ -1,3 +1,7 @@
+## 1.0.2
+
+- fix: export dev-log sink
+
 ## 1.0.0
 
 - feat!: upgraded to dart v3
