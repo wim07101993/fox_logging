@@ -1,5 +1,4 @@
-import 'package:fox_logging/src/sink/stream_log_sink.dart';
-import 'package:logging/logging.dart';
+import 'package:fox_logging/fox_logging.dart';
 import 'package:test/test.dart';
 
 import '../../faker_extensions.dart';
@@ -12,16 +11,19 @@ void main() {
   });
 
   group('nameless constructor', () {
-    test('should create a stream controller', () async {
+    test('should create a single-subscription stream', () {
       // act && assert
-      final _ = logSink.stream;
+      expect(logSink.stream.isBroadcast, isFalse);
     });
   });
 
   group('broadcast constructor', () {
-    test('should create a stream controller', () async {
+    test('should create a broadcast stream', () {
+      // arrange
+      logSink = StreamLogSink.broadcast();
+
       // act && assert
-      final _ = logSink.stream;
+      expect(logSink.stream.isBroadcast, isTrue);
     });
 
     test('should be possible to listen multiple times', () async {
@@ -67,6 +69,21 @@ void main() {
 
       // assert
       expect(receivedRecord, logRecord);
+    });
+  });
+
+  group('dispose', () {
+    test('should close the stream', () async {
+      // arrange
+      var isDone = false;
+      logSink.stream.listen(null, onDone: () => isDone = true);
+
+      // act
+      await logSink.dispose();
+      await Future.delayed(const Duration(milliseconds: 1));
+
+      // assert
+      expect(isDone, isTrue);
     });
   });
 }

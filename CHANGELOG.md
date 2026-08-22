@@ -1,3 +1,24 @@
+## 1.1.0
+
+- feat: added `LogSinkMixin.log`, which applies the filter and catches errors
+  thrown by `write`. Use it instead of `write` when handing a record to a sink.
+- feat: added `LogSinkMixin.onError`, called when `write` fails or a log-stream
+  emits an error. It does nothing by default, so a failing sink can no longer
+  bring down the program it logs for.
+- fix: `MultiLogSink` no longer bypasses the filters of the sinks it writes to.
+- fix: `StreamLogSink.dispose` closes its stream.
+- fix: `MultiLogSink.dispose` disposes the sinks it writes to.
+- fix: `LogSinkMixin.dispose` no longer cancels the same subscription twice.
+- fix: `JsonLogRecordParser.parseLevel` returns `Level.FINE` for unknown level
+  names and values instead of throwing a `StateError`.
+- fix: `LogRecordFormatter.formatList` separates records with `\n` instead
+  of `\r\n`.
+- deprecated `LogSink`, use `LogSinkMixin` instead. All built-in sinks now use
+  the mixin.
+- docs: documented filters, `MultiLogSink`, `DevLogSink`, `JsonFormatter` and
+  the parsers in the readme.
+- ci: analyzer, formatting and workflow fixes.
+
 ## 1.0.2
 
 - fix: export dev-log sink

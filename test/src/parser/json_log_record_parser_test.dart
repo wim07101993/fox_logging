@@ -223,6 +223,24 @@ void main() {
       expect(level.value, original.value);
     });
 
+    test('should return fine for an unknown level-name', () {
+      // act
+      final level = parser.parseLevel('not-a-level');
+
+      // assert
+      expect(level.name, Level.FINE.name);
+      expect(level.value, Level.FINE.value);
+    });
+
+    test('should return fine for an unknown level-value', () {
+      // act
+      final level = parser.parseLevel(-1);
+
+      // assert
+      expect(level.name, Level.FINE.name);
+      expect(level.value, Level.FINE.value);
+    });
+
     test('should return fine for everything else', () {
       // act
       final level = parser.parseLevel(faker);

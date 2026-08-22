@@ -12,6 +12,6 @@ abstract class LogRecordFormatter {
   /// Formats a given [LogRecord] to a [String].
   String format(LogRecord logRecord);
 
-  /// Formats a [List] of [LogRecord] to a [String}.
-  String formatList(List<LogRecord> list) => list.map(format).join("\r\n");
+  /// Formats a [List] of [LogRecord] to a [String], one record per line.
+  String formatList(List<LogRecord> list) => list.map(format).join('\n');
 }

@@ -1,6 +1,6 @@
 /// Extensions on the logging package which allows for multiple log-sinks,
 /// formatters, filters,...
-library fox_logging;
+library;
 
 export 'package:logging/logging.dart';
 

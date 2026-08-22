@@ -33,7 +33,42 @@ void main() {
 
       // assert
       for (final mockLogSink in mockLogSinks) {
-        verify(() => mockLogSink.write(fakeLogRecord));
+        verify(() => mockLogSink.log(fakeLogRecord));
+      }
+    });
+
+    test('should let each sink apply its own filter', () async {
+      // arrange
+      final blockedSink = StreamLogSink.broadcast(
+        const LogFilter.level(Level.SEVERE),
+      );
+      final passingSink = StreamLogSink.broadcast();
+      multiLogSink = MultiLogSink([blockedSink, passingSink]);
+      final logRecord = faker.logRecord(level: Level.INFO);
+
+      LogRecord? blocked;
+      LogRecord? passed;
+      blockedSink.stream.listen((record) => blocked = record);
+      passingSink.stream.listen((record) => passed = record);
+
+      // act
+      await multiLogSink.write(logRecord);
+      await Future.delayed(const Duration(milliseconds: 1));
+
+      // assert
+      expect(blocked, isNull);
+      expect(passed, logRecord);
+    });
+  });
+
+  group('dispose', () {
+    test('should dispose all sinks', () async {
+      // act
+      await multiLogSink.dispose();
+
+      // assert
+      for (final mockLogSink in mockLogSinks) {
+        verify(mockLogSink.dispose);
       }
     });
   });
