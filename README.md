@@ -11,11 +11,40 @@ formatters.
 
 ## Sink
 
-A sink write a log entry to some place, like the console, file, database,...
+A sink writes a log entry to some place, like the console, file, database,...
 
 ```dart
 final sink = IoLogSink(myFormatter);
 ```
+
+The built-in sinks are:
+
+| Sink             | Writes to                                            |
+|------------------|------------------------------------------------------|
+| `IoLogSink`      | `stdout`, and `stderr` for `Level.SEVERE` and higher |
+| `PrintSink`      | the `print` function, line per line                  |
+| `DevLogSink`     | the `dart:developer` `log` function                  |
+| `StreamLogSink`  | a `Stream<LogRecord>` you can listen to              |
+| `MultiLogSink`   | a list of other sinks                                |
+
+Hand a record to a sink with `log`: it applies the [filter](#filter) and keeps
+a failing sink from throwing into the program it logs for. `write` is the raw
+counterpart which every sink implements.
+
+```dart
+await sink.log(record); // filtered
+await sink.write(record); // unfiltered
+
+// override onError to find out about failing writes
+class MySink with LogSinkMixin {
+  @override
+  void onError(Object error, StackTrace stackTrace) => ...;
+}
+```
+
+Call `dispose` when you are done with a sink. It cancels the subscriptions
+made by `listenTo`, and releases whatever else the sink holds (the stream of a
+`StreamLogSink`, the sinks of a `MultiLogSink`,...).
 
 ## Formatter
 
@@ -24,6 +53,48 @@ pretty, verbose or simple, concise log. Or a complete custom implementation.
 
 ```dart
 final simpleFormatter = SimpleFormatter();
+```
+
+The built-in formatters are `SimpleFormatter`, `PrettyFormatter`,
+`JsonFormatter` and `LevelDependentFormatter`, which picks a formatter based on
+the level of the record:
+
+```dart
+final formatter = LevelDependentFormatter(
+  defaultFormatter: SimpleFormatter(),
+  severe: PrettyFormatter(),
+  shout: PrettyFormatter(),
+);
+```
+
+## Filter
+
+A filter decides which records reach a sink. Every sink takes one as its last
+constructor argument and does not filter anything by default.
+
+```dart
+final errorsOnly = IoLogSink(SimpleFormatter(), const LogFilter.level(Level.SEVERE));
+```
+
+Each sink applies its own filter, also when it is wrapped in a `MultiLogSink`:
+
+```dart
+final sink = MultiLogSink([
+  IoLogSink(PrettyFormatter()),
+  // only errors end up in the json log
+  IoLogSink(const JsonFormatter(), const LogFilter.level(Level.SEVERE)),
+]);
+```
+
+Implement `LogFilter` for anything else.
+
+## Parser
+
+Parsers turn a `String` back into a `LogRecord`, which is useful to read back
+logs written with the `JsonFormatter`.
+
+```dart
+final records = const JsonLogRecordParser().parseList(await file.readAsString());
 ```
 
 ## Small example

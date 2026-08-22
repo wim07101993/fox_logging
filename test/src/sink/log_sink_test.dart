@@ -15,6 +15,7 @@ void main() {
 
   setUpAll(() {
     registerFallbackValue(faker.logRecord());
+    registerFallbackValue(StackTrace.empty);
   });
 
   setUp(() {
@@ -24,6 +25,56 @@ void main() {
     when(() => mockFilter.shouldLog(any())).thenReturn(true);
 
     logSink = _LogSink(mockWriter, mockFilter);
+  });
+
+  group('log', () {
+    test('should write the log-record when the filter allows it', () async {
+      // arrange
+      final record = faker.logRecord();
+
+      // act
+      await logSink.log(record);
+
+      // assert
+      verify(() => mockWriter.write(record));
+    });
+
+    test('should not write the log-record when the filter blocks it', () async {
+      // arrange
+      when(() => mockFilter.shouldLog(any())).thenReturn(false);
+
+      // act
+      await logSink.log(faker.logRecord());
+
+      // assert
+      verifyNoMoreInteractions(mockWriter);
+    });
+
+    test('should report errors thrown by write instead of throwing', () async {
+      // arrange
+      final error = Exception(faker.lorem.sentence());
+      when(() => mockWriter.write(any())).thenThrow(error);
+
+      // act
+      await logSink.log(faker.logRecord());
+
+      // assert
+      verify(() => mockWriter.onError(error, any()));
+    });
+
+    test('should report failing futures of write instead of throwing',
+        () async {
+      // arrange
+      final error = Exception(faker.lorem.sentence());
+      when(() => mockWriter.write(any()))
+          .thenAnswer((i) => Future.error(error));
+
+      // act
+      await logSink.log(faker.logRecord());
+
+      // assert
+      verify(() => mockWriter.onError(error, any()));
+    });
   });
 
   group('listenTo', () {
@@ -64,6 +115,19 @@ void main() {
       await Future.delayed(const Duration(milliseconds: 1));
       verifyNoMoreInteractions(mockWriter);
     });
+
+    test('should report errors emitted by the log-stream', () async {
+      // arrange
+      logSink.listenTo(streamController.stream);
+      final error = Exception(faker.lorem.sentence());
+
+      // act
+      streamController.addError(error);
+
+      // assert
+      await Future.delayed(const Duration(milliseconds: 1));
+      verify(() => mockWriter.onError(error, any()));
+    });
   });
 
   group('dispose', () {
@@ -84,13 +148,12 @@ void main() {
       mockStream2 = MockStream();
       mockStream3 = MockStream();
 
-      when(() => mockStream1.where(any())).thenAnswer((_) => mockStream1);
-      when(() => mockStream2.where(any())).thenAnswer((_) => mockStream2);
-      when(() => mockStream3.where(any())).thenAnswer((_) => mockStream3);
-
-      when(() => mockStream1.listen(any())).thenReturn(mockSubscription1);
-      when(() => mockStream2.listen(any())).thenReturn(mockSubscription2);
-      when(() => mockStream3.listen(any())).thenReturn(mockSubscription3);
+      when(() => mockStream1.listen(any(), onError: any(named: 'onError')))
+          .thenReturn(mockSubscription1);
+      when(() => mockStream2.listen(any(), onError: any(named: 'onError')))
+          .thenReturn(mockSubscription2);
+      when(() => mockStream3.listen(any(), onError: any(named: 'onError')))
+          .thenReturn(mockSubscription3);
 
       logSink.listenTo(mockStream1);
       logSink.listenTo(mockStream2);
@@ -106,6 +169,28 @@ void main() {
       verify(() => mockSubscription2.cancel());
       verify(() => mockSubscription3.cancel());
     });
+
+    test('should not cancel the same subscription twice', () async {
+      // act
+      await logSink.dispose();
+      await logSink.dispose();
+
+      // assert
+      verify(() => mockSubscription1.cancel()).called(1);
+      verify(() => mockSubscription2.cancel()).called(1);
+      verify(() => mockSubscription3.cancel()).called(1);
+    });
+  });
+
+  group('LogSink', () {
+    test('should not filter any logs by default', () {
+      // arrange
+      // ignore: deprecated_member_use_from_same_package
+      final sink = _DeprecatedLogSink(mockWriter);
+
+      // act && assert
+      expect(sink.filter.shouldLog(faker.logRecord()), isTrue);
+    });
   });
 }
 
@@ -118,10 +203,27 @@ class _LogSink with LogSinkMixin {
 
   @override
   Future<void> write(LogRecord logRecord) => writer.write(logRecord);
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    writer.onError(error, stackTrace);
+  }
+}
+
+// ignore: deprecated_member_use_from_same_package
+class _DeprecatedLogSink extends LogSink {
+  _DeprecatedLogSink(this.writer);
+
+  final _MockLogWriter writer;
+
+  @override
+  Future<void> write(LogRecord logRecord) => writer.write(logRecord);
 }
 
 abstract class _LogWriter {
   Future<void> write(LogRecord logRecord);
+
+  void onError(Object error, StackTrace stackTrace);
 }
 
 class _MockLogWriter extends Mock implements _LogWriter {

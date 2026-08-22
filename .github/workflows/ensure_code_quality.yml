@@ -11,10 +11,10 @@ jobs:
   code-quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install dart
-        uses: dart-lang/setup-dart@v1.4
+        uses: dart-lang/setup-dart@v1
 
       - name: Install dependencies
         run: dart pub global activate pana
@@ -29,7 +29,7 @@ jobs:
         run: dart analyze --fatal-infos --fatal-warnings
 
       - name: Verify Pub Score
-        run: bin/ensure_pana_score.sh
+        run: tool/ensure_pana_score.sh
         
       - name: Verify ready for publish
         run: dart pub publish --dry-run
@@ -37,10 +37,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Install flutter
-        uses: subosito/flutter-action@v2.8.0
+      - name: Install dart
+        uses: dart-lang/setup-dart@v1
 
       - name: Install dependencies
         run: |

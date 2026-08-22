@@ -42,7 +42,7 @@ void main() {
     testWithPrint(
       'should print the lines from the formatted output',
       // act
-      () async => sink.write(fakeLogRecord),
+      () => sink.write(fakeLogRecord),
       // assert
       (prints) => expect(prints, lines),
     );

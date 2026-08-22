@@ -16,6 +16,8 @@ class MockLogger extends Mock implements Logger {}
 class MockLogSink extends Mock implements LogSinkMixin {
   MockLogSink() {
     when(() => write(any())).thenAnswer((i) => Future.value());
+    when(() => log(any())).thenAnswer((i) => Future.value());
+    when(dispose).thenAnswer((i) => Future.value());
   }
 }
 

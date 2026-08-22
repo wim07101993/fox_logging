@@ -63,8 +63,8 @@ void main() {
       // assert
       expect(
         value,
-        '$fakeReturnValue1\r\n'
-        '$fakeReturnValue2\r\n'
+        '$fakeReturnValue1\n'
+        '$fakeReturnValue2\n'
         '$fakeReturnValue3',
       );
     });

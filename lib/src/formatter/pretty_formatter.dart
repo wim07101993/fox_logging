@@ -9,7 +9,7 @@ import 'package:logging/logging.dart';
 /// Formats a [LogRecord] to a pretty, human readable [String].
 ///
 /// Formatted example:
-/// ```
+/// ```text
 /// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 /// ┃ ⛔  Type Error ...
 /// ┃ Error: Throw of null.

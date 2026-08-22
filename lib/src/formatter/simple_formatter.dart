@@ -9,7 +9,7 @@ import 'package:logging/logging.dart';
 /// Formats as [LogRecord] in a simple, concise way.
 ///
 /// Formatted example:
-/// ```
+/// ```text
 /// [E] 2021-12-26T13:36:03.012282 Simple: Type error ... ERROR: Throw of Something.
 /// ```
 class SimpleFormatter extends LogRecordFormatter {
