@@ -24,8 +24,8 @@
 - docs: documented the remaining public members: the `Logger` short-hands
   (`v`, `d`, `f`, `c`, `i`, `w`, `e`, `wtf`) and the constructors of the sinks
   and the filters. The `public_member_api_docs` lint keeps it that way.
-- ci: analyzer, formatting and workflow fixes, updated the used github actions
-  and fixed the pana-score script.
+- ci: analyzer, formatting and workflow fixes, updated the GitHub Actions the
+  workflows use and fixed the pana-score script.
 
 ## 1.0.2
 
