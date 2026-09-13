@@ -185,7 +185,6 @@ void main() {
   group('LogSink', () {
     test('should not filter any logs by default', () {
       // arrange
-      // ignore: deprecated_member_use_from_same_package
       final sink = _DeprecatedLogSink(mockWriter);
 
       // act && assert
@@ -210,7 +209,6 @@ class _LogSink with LogSinkMixin {
   }
 }
 
-// ignore: deprecated_member_use_from_same_package
 class _DeprecatedLogSink extends LogSink {
   _DeprecatedLogSink(this.writer);
 

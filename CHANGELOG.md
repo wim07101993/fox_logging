@@ -17,7 +17,11 @@
   the mixin.
 - docs: documented filters, `MultiLogSink`, `DevLogSink`, `JsonFormatter` and
   the parsers in the readme.
-- ci: analyzer, formatting and workflow fixes.
+- docs: documented the remaining public members: the `Logger` short-hands
+  (`v`, `d`, `f`, `c`, `i`, `w`, `e`, `wtf`) and the constructors of the sinks
+  and the filters. The `public_member_api_docs` lint keeps it that way.
+- ci: analyzer, formatting and workflow fixes, updated the used github actions
+  and fixed the pana-score script.
 
 ## 1.0.2
 

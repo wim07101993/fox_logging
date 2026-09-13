@@ -3,6 +3,8 @@ import 'package:logging/logging.dart';
 
 /// Only logs log-records which have at least a certain level.
 class LogLevelFilter implements LogFilter {
+  /// Creates a filter which only lets log-records through which have at
+  /// least the given [level].
   const LogLevelFilter(this.level);
 
   /// The level which the log-record must at least have.
