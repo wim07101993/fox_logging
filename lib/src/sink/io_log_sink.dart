@@ -8,7 +8,7 @@ import 'package:fox_logging/fox_logging.dart';
 ///
 /// When the level is [Level.SEVERE] or higher [stderr] is used, otherwise
 /// [stdout].
-class IoLogSink with LogSinkMixin {
+class IoLogSink extends LogSink {
   /// Creates a sink which writes its log-records to [stdout] and [stderr].
   ///
   /// [formatter] is used to format a [LogRecord] before printing it.
@@ -16,14 +16,11 @@ class IoLogSink with LogSinkMixin {
   /// filtered out.
   IoLogSink(
     this.formatter, [
-    this.filter = const LogFilter.none(),
+    super.filter,
   ]);
 
   /// Used to format [LogRecord] before printing it.
   final LogRecordFormatter formatter;
-
-  @override
-  final LogFilter filter;
 
   @override
   Future<void> write(LogRecord logRecord) {

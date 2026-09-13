@@ -1,19 +1,15 @@
 import 'dart:async';
 
-import 'package:fox_logging/src/filter/log_filter.dart';
 import 'package:fox_logging/src/sink/log_sink.dart';
 import 'package:logging/logging.dart';
 
 /// Combines multiple [LogSinkMixin] implementations into one.
-class MultiLogSink with LogSinkMixin {
+class MultiLogSink extends LogSink {
   /// Creates a log-sink which writes to all given [sinks]
-  MultiLogSink(this.sinks, [this.filter = const LogFilter.none()]);
+  MultiLogSink(this.sinks, [super.filter]);
 
   /// The [LogSinkMixin] implementations to write to.
   final List<LogSinkMixin> sinks;
-
-  @override
-  final LogFilter filter;
 
   /// Writes [logRecord] to all [sinks].
   ///

@@ -6,17 +6,21 @@
   emits an error. It does nothing by default, so a failing sink can no longer
   bring down the program it logs for.
 - fix: `MultiLogSink` no longer bypasses the filters of the sinks it writes to.
-- fix: `StreamLogSink.dispose` closes its stream.
+- fix: `StreamLogSink.dispose` closes its stream, and completes even when
+  nothing listened to the stream or the listener is paused. Previously it
+  never completed, which also hung a `MultiLogSink` wrapping such a sink.
 - fix: `MultiLogSink.dispose` disposes the sinks it writes to.
 - fix: `LogSinkMixin.dispose` no longer cancels the same subscription twice.
 - fix: `JsonLogRecordParser.parseLevel` returns `Level.FINE` for unknown level
   names and values instead of throwing a `StateError`.
 - fix: `LogRecordFormatter.formatList` separates records with `\n` instead
   of `\r\n`.
-- deprecated `LogSink`, use `LogSinkMixin` instead. All built-in sinks now use
-  the mixin.
+- deprecated `LogSink`, use `LogSinkMixin` instead. The built-in sinks keep
+  extending `LogSink` during the deprecation, so existing `LogSink` variables
+  and collections keep compiling. The supertype is removed in 2.0.0.
 - docs: documented filters, `MultiLogSink`, `DevLogSink`, `JsonFormatter` and
   the parsers in the readme.
+- docs: the `onError` example in the readme compiles now.
 - docs: documented the remaining public members: the `Logger` short-hands
   (`v`, `d`, `f`, `c`, `i`, `w`, `e`, `wtf`) and the constructors of the sinks
   and the filters. The `public_member_api_docs` lint keeps it that way.

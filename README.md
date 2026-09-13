@@ -38,7 +38,17 @@ await sink.write(record); // unfiltered
 // override onError to find out about failing writes
 class MySink with LogSinkMixin {
   @override
-  void onError(Object error, StackTrace stackTrace) => ...;
+  final LogFilter filter = const LogFilter.none();
+
+  @override
+  Future<void> write(LogRecord logRecord) async {
+    // write the record to wherever this sink goes
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    // report the failed write somewhere else
+  }
 }
 ```
 

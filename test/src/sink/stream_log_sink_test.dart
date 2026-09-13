@@ -85,5 +85,26 @@ void main() {
       // assert
       expect(isDone, isTrue);
     });
+
+    test('should complete when the stream was never listened to', () async {
+      // act && assert
+      await expectLater(logSink.dispose(), completes);
+    });
+
+    test('should complete when the listener is paused', () async {
+      // arrange
+      logSink.stream.listen(null).pause();
+
+      // act && assert
+      await expectLater(logSink.dispose(), completes);
+    });
+
+    test('should complete for a sink wrapped in a MultiLogSink', () async {
+      // arrange
+      final multiLogSink = MultiLogSink([logSink]);
+
+      // act && assert
+      await expectLater(multiLogSink.dispose(), completes);
+    });
   });
 }
