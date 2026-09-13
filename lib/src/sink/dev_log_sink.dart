@@ -7,6 +7,10 @@ import 'package:logging/logging.dart';
 
 /// A [LogSinkMixin] which uses the [developer.log] function to write logs to.
 class DevLogSink with LogSinkMixin {
+  /// Creates a sink which writes its log-records with [developer.log].
+  ///
+  /// [filter] decides which log-records make it to [developer.log]. By
+  /// default none are filtered out.
   DevLogSink([this.filter = const LogFilter.none()]);
 
   @override

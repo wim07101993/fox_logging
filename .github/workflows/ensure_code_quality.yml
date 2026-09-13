@@ -11,17 +11,17 @@ jobs:
   code-quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install dart
         uses: dart-lang/setup-dart@v1
 
       - name: Install dependencies
         run: dart pub global activate pana
-        
+
       - name: Pub get
         run: dart pub get
-          
+
       - name: Verify formatting
         run: dart format --set-exit-if-changed .
 
@@ -30,14 +30,14 @@ jobs:
 
       - name: Verify Pub Score
         run: tool/ensure_pana_score.sh
-        
+
       - name: Verify ready for publish
         run: dart pub publish --dry-run
-        
+
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install dart
         uses: dart-lang/setup-dart@v1
@@ -46,16 +46,16 @@ jobs:
         run: |
           dart pub get
           dart pub global activate coverage
-      
+
       - name: Run dart tests
         shell: bash
         run: dart test --coverage=coverage && dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3.1.1
+        uses: codecov/codecov-action@v7
 
       - name: Check code coverage
-        uses: VeryGoodOpenSource/very_good_coverage@v2.1.0
+        uses: VeryGoodOpenSource/very_good_coverage@v3.0.0
         with:
           min_coverage: 90
           path: coverage/lcov.info

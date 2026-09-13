@@ -10,11 +10,18 @@ import 'package:logging/logging.dart';
 ///
 /// [formatter] is used to format [LogRecord] before printing it.
 class PrintSink with LogSinkMixin {
+  /// Creates a sink which writes its log-records with [print].
+  ///
+  /// [formatter] is used to format a [LogRecord] before printing it.
+  /// [filter] decides which log-records get printed. By default none are
+  /// filtered out.
   PrintSink(
     this.formatter, [
     this.filter = const LogFilter.none(),
   ]);
 
+  /// Splits a formatted log-record into the lines which are printed
+  /// separately.
   static const lineSplitter = LineSplitter();
 
   /// Used to format [LogRecord] before printing it.

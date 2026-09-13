@@ -6,9 +6,18 @@ import 'package:logging/logging.dart';
 
 /// A [LogSinkMixin] which exposes the log-records it receives as a [Stream].
 class StreamLogSink with LogSinkMixin {
+  /// Creates a sink which exposes its log-records as a single-subscription
+  /// [stream].
+  ///
+  /// [filter] decides which log-records make it to the [stream]. By default
+  /// none are filtered out.
   StreamLogSink([this.filter = const LogFilter.none()])
       : _controller = StreamController();
 
+  /// Creates a sink which exposes its log-records as a broadcast [stream].
+  ///
+  /// [filter] decides which log-records make it to the [stream]. By default
+  /// none are filtered out.
   StreamLogSink.broadcast([this.filter = const LogFilter.none()])
       : _controller = StreamController.broadcast();
 
