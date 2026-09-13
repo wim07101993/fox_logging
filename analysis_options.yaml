@@ -1,1 +1,7 @@
 include: package:lint/analysis_options.yaml
+
+linter:
+  rules:
+    # Every public member of this package is part of its API, so it should be
+    # documented.
+    - public_member_api_docs

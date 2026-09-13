@@ -1,21 +1,25 @@
 import 'dart:async';
 
-import 'package:fox_logging/src/filter/log_filter.dart';
 import 'package:fox_logging/src/sink/log_sink.dart';
 import 'package:logging/logging.dart';
 
 /// A [LogSinkMixin] which exposes the log-records it receives as a [Stream].
-class StreamLogSink with LogSinkMixin {
-  StreamLogSink([this.filter = const LogFilter.none()])
-      : _controller = StreamController();
+class StreamLogSink extends LogSink {
+  /// Creates a sink which exposes its log-records as a single-subscription
+  /// [stream].
+  ///
+  /// [filter] decides which log-records make it to the [stream]. By default
+  /// none are filtered out.
+  StreamLogSink([super.filter]) : _controller = StreamController();
 
-  StreamLogSink.broadcast([this.filter = const LogFilter.none()])
+  /// Creates a sink which exposes its log-records as a broadcast [stream].
+  ///
+  /// [filter] decides which log-records make it to the [stream]. By default
+  /// none are filtered out.
+  StreamLogSink.broadcast([super.filter])
       : _controller = StreamController.broadcast();
 
   final StreamController<LogRecord> _controller;
-
-  @override
-  final LogFilter filter;
 
   /// The log-records written to this sink.
   Stream<LogRecord> get stream => _controller.stream;
@@ -27,8 +31,14 @@ class StreamLogSink with LogSinkMixin {
   }
 
   /// Disposes this sink and closes the [stream].
+  ///
+  /// Does not wait for the done event to reach a listener. A
+  /// single-subscription stream only delivers that event once something
+  /// listens to it, so waiting would hang the disposal of a sink which was
+  /// never listened to, or whose listener is paused.
   @override
-  Future<void> dispose() {
-    return Future.wait([super.dispose(), _controller.close()]);
+  Future<void> dispose() async {
+    await super.dispose();
+    unawaited(_controller.close());
   }
 }

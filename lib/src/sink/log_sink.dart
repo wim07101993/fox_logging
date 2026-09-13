@@ -60,6 +60,7 @@ mixin LogSinkMixin {
 /// This class is deprecated, use [LogSinkMixin] instead.
 @Deprecated('Use LogSinkMixin instead')
 abstract class LogSink with LogSinkMixin {
+  /// Creates a sink which writes the log-records [filter] allows through.
   @Deprecated('Use LogSinkMixin instead')
   LogSink([this.filter = const LogFilter.none()]);
 

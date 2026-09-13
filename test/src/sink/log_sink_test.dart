@@ -185,11 +185,29 @@ void main() {
   group('LogSink', () {
     test('should not filter any logs by default', () {
       // arrange
-      // ignore: deprecated_member_use_from_same_package
       final sink = _DeprecatedLogSink(mockWriter);
 
       // act && assert
       expect(sink.filter.shouldLog(faker.logRecord()), isTrue);
+    });
+
+    test('should stay the supertype of the built-in sinks', () {
+      // The built-in sinks keep extending the deprecated `LogSink` until 2.0.0,
+      // so that `LogSink` variables of 1.x consumers keep compiling.
+      expect(IoLogSink(SimpleFormatter()), isA<LogSink>());
+      expect(PrintSink(SimpleFormatter()), isA<LogSink>());
+      expect(DevLogSink(), isA<LogSink>());
+      expect(StreamLogSink(), isA<LogSink>());
+      expect(StreamLogSink.broadcast(), isA<LogSink>());
+      expect(MultiLogSink(const []), isA<LogSink>());
+    });
+
+    test('should let the built-in sinks log everything by default', () {
+      // act && assert
+      expect(DevLogSink().filter, isA<NoLogFilter>());
+      expect(StreamLogSink().filter, isA<NoLogFilter>());
+      expect(MultiLogSink(const []).filter, isA<NoLogFilter>());
+      expect(IoLogSink(SimpleFormatter()).filter, isA<NoLogFilter>());
     });
   });
 }
@@ -210,7 +228,6 @@ class _LogSink with LogSinkMixin {
   }
 }
 
-// ignore: deprecated_member_use_from_same_package
 class _DeprecatedLogSink extends LogSink {
   _DeprecatedLogSink(this.writer);
 
